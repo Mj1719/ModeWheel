@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mode Wheel v12</title>
+<link href="https://fonts.googleapis.com/css2?family=Cardo&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app">
+  <div id="container">
+    <svg id="wheel" viewBox="-260 -260 520 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
+    <div id="controls">
+      <div id="interval-controls"></div>
+      <div id="action-controls">
+        <button id="play-mode">Play Mode</button>
+        <button id="play-chords">Play Chords</button>
+        <button id="play-scale">Play Scale</button>
+      </div>
+      <div id="key-area">
+        <div id="key-rows"></div>
+      </div>
+
+      <!-- 🎚️ Mode Family Control Panel -->
+      <div id="mode-controls">
+        <div class="control-group">
+          <div class="control-label"># of Notes</div>
+          <div class="control-row">
+            <button id="notes-minus">−</button>
+            <span id="notes-display">7</span>
+            <button id="notes-plus">+</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="control-label">Mode Family</div>
+          <div class="control-row">
+            <button id="family-prev">◀</button>
+            <span id="family-display">Diatonic</span>
+            <button id="family-next">▶</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="control-label">Index</div>
+          <input type="text" id="index-input" placeholder="7.1.1" maxlength="6">
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

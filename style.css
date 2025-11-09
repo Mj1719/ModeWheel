@@ -1,0 +1,328 @@
+:root {
+  --bg: #030306;
+  --stone1: #3a3b3d;
+  --stone2: #222325;
+  --ivory: #ffffff;
+  --glow: #cfe6ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: radial-gradient(circle at 50% 35%, #07070a 0%, #000 70%);
+  font-family: 'Cardo', serif;
+  color: var(--ivory);
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  max-width: 980px;
+}
+
+svg#wheel {
+  width: 80vmin;
+  max-width: 720px;
+  height: 80vmin;
+  max-height: 720px;
+  display: block;
+  user-select: none;
+  touch-action: none;
+}
+
+/* --- Wheel Elements --- */
+.stone-ring {
+  fill: url(#stoneGrad);
+  stroke: #171717;
+  stroke-width: 3;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.7));
+}
+
+.note-circle {
+  fill: #1b1b1c;
+  stroke: #444;
+  stroke-width: 3;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.6));
+}
+
+.note-label {
+  fill: #ffffff;
+  font-family: 'Cardo', serif;
+  pointer-events: none;
+}
+
+.spoke {
+  stroke-width: 6;
+  vector-effect: non-scaling-stroke;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.spoke.on {
+  opacity: 1;
+}
+
+.center {
+  fill: #111;
+  stroke: #3b3b3b;
+  stroke-width: 3;
+}
+
+/* --- Interval Ring --- */
+.interval-wedge {
+  fill: #2a2a2a;
+  stroke: #111;
+  stroke-width: 1.5px;
+  cursor: pointer;
+  transition: fill 0.25s ease, filter 0.3s ease, stroke 0.25s ease;
+}
+
+.interval-wedge:hover {
+  filter: brightness(1.3);
+}
+
+.interval-wedge.active {
+  fill: #ffffff55;
+  stroke: #eee;
+  filter: drop-shadow(0 0 12px #fff);
+}
+
+.interval-label {
+  fill: #ffffff;
+  font-family: 'Cardo', serif;
+  font-size: 15px;
+  pointer-events: none;
+}
+
+/* --- Control Areas --- */
+#controls {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+#interval-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.interval-btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: linear-gradient(#2b2b2d, #1c1c1d);
+  border: 1px solid #222;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.interval-btn.active {
+  box-shadow: inset 0 2px 8px rgba(153, 170, 255, 0.06);
+  color: var(--glow);
+  border-color: rgba(153, 170, 255, 0.12);
+}
+
+/* Hide playback buttons */
+#action-controls {
+  display: none;
+}
+
+/* --- Mode Tiles (restored to v14 proportions) --- */
+#key-area {
+  width: 100%;
+  max-width: 880px;
+  overflow: visible;
+}
+
+#key-rows {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  max-width: 880px;
+  margin-top: 4px;
+  padding: 0;
+}
+
+.mode-tile {
+  position: relative;
+  flex: 1 1 110px;
+  max-width: 100px;
+  min-width: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  border-radius: 4px;
+  overflow: visible;
+  box-sizing: border-box;
+  background: radial-gradient(
+    circle at center,
+    var(--tile-color) 0%,
+    var(--tile-color) 40%,
+    #0d0d0d 130%
+  ) !important;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.15),
+              inset 0 0 12px rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.15s ease, filter 0.3s ease;
+}
+
+.mode-tile:hover {
+  transform: scale(1.04);
+  filter: brightness(1.25);
+}
+
+.mode-tile .key-btn {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: clamp(4px, 0.4vw, 6px) clamp(6px, 1vw, 10px);
+  font-family: 'Cardo', serif;
+  font-size: clamp(13px, 1.2vw, 16px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 2px 0;
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.15);
+}
+
+.mode-tile .key-btn:hover {
+  background-color: rgba(25, 25, 25, 0.85);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.25);
+}
+
+.mode-tile .key-btn.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+/* --- Pulse effect for note highlights --- */
+.text-pulse {
+  animation: pulseOnce 0.7s ease-out;
+}
+
+@keyframes pulseOnce {
+  0% {
+    opacity: 0;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+  }
+  20% {
+    opacity: 1;
+    filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.95));
+  }
+  100% {
+    opacity: 0;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+  }
+}
+
+/* --- Mode Control Panel --- */
+#mode-controls {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  font-family: 'Cardo', serif;
+  color: #ddd;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.control-label {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.control-group button {
+  background: #222;
+  border: 1px solid #555;
+  color: #fff;
+  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#family-display, #notes-display {
+  min-width: 70px;
+  text-align: center;
+  font-weight: 600;
+}
+
+#index-input {
+  background: #111;
+  border: 1px solid #555;
+  color: #fff;
+  border-radius: 6px;
+  text-align: center;
+  width: 70px;
+  height: 26px;
+}
+
+/* ---------- Optimized Glow Animation ---------- */
+
+/* Define the color dynamically with --glow-color from JS */
+:root {
+  --glow-color: #fff;
+}
+
+/* Instead of GaussianBlur filters, use drop-shadow (GPU fast) */
+.glow-active {
+  animation: glowPulse 0.8s ease-out;
+  will-change: filter, opacity;
+}
+
+@keyframes glowPulse {
+  0% {
+    opacity: 1;
+    filter: drop-shadow(0 0 0 var(--glow-color));
+  }
+  25% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px var(--glow-color));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 9px var(--glow-color));
+  }
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 0 var(--glow-color));
+  }
+}
