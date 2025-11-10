@@ -1007,38 +1007,50 @@ function scheduleHighlight(idx) {
 
 // ---------- Playback ----------
 function highlightNoteVisual(idx) {
-  // schedule all DOM updates in one animation frame
+  const lbl = svg.querySelector(`text.note-label[data-idx="${idx}"]`);
+  const circle = svg.querySelector(`circle.note-circle[data-index="${idx}"]`);
+  const intervalDeg = ((idx - state.rootIndex) % 12 + 12) % 12;
+  const colorIdx = (intervalDeg + state.colorStep) % 12;
+  const spoke = baseMask.has(colorIdx)
+    ? svg.querySelector(`line.spoke[data-index="${colorIdx}"]`)
+    : null;
+
+  const glowColor = spoke ? spoke.getAttribute('stroke') : '#fff';
+
+  // ✴️ helper to trigger glow animations for labels/circles
+  const triggerGlow = (el) => {
+    if (!el) return;
+    el.classList.remove('glow-active');
+    void el.offsetWidth; // restart animation
+    el.style.setProperty('--glow-color', glowColor);
+    el.classList.add('glow-active');
+    setTimeout(() => el.classList.remove('glow-active'), 700);
+  };
+
+// 🔹 create white halo around colored spoke (visible outer glow)
+if (spoke) {
+  const halo = spoke.cloneNode();
+  halo.removeAttribute('class');
+  halo.setAttribute('stroke', 'white');
+  halo.setAttribute('stroke-width', parseFloat(spoke.getAttribute('stroke-width')) + 6); // much thicker
+  halo.setAttribute('stroke-linecap', 'round');
+  halo.classList.add('spoke-halo');
+
+  spoke.parentNode.insertBefore(halo, spoke); // place behind the colored spoke
+
+  // animate halo fade
   requestAnimationFrame(() => {
-    // Label and circle always light up
-    const lbl = svg.querySelector(`text.note-label[data-idx="${idx}"]`);
-    const circle = svg.querySelector(`circle.note-circle[data-index="${idx}"]`);
-
-    // Map note → interval → color index (respects rotations)
-    const intervalDeg = ((idx - state.rootIndex) % 12 + 12) % 12;
-    const colorIdx = (intervalDeg + state.colorStep) % 12;
-
-    // Only light the spoke if that color index is active
-    const spoke = baseMask.has(colorIdx)
-      ? svg.querySelector(`line.spoke[data-index="${colorIdx}"]`)
-      : null;
-
-    // shared helper for the glow effect
-    const triggerGlow = (el, color) => {
-      if (!el) return;
-      el.classList.remove('glow-active');
-      void el.offsetWidth; // allow animation restart
-      if (color) el.style.setProperty('--glow-color', color);
-      el.classList.add('glow-active');
-      // shorter lifetime (smooth fade)
-      setTimeout(() => el.classList.remove('glow-active'), 800);
-    };
-
-    const glowColor = spoke ? spoke.getAttribute('stroke') : '#fff';
-    triggerGlow(lbl, glowColor);
-    triggerGlow(circle, glowColor);
-    triggerGlow(spoke, glowColor);
+    halo.style.opacity = 1;
+    setTimeout(() => (halo.style.opacity = 0), 300);
+    setTimeout(() => halo.remove(), 700);
   });
 }
+
+  // trigger note label and circle glows
+  triggerGlow(lbl);
+  triggerGlow(circle);
+}
+
 // ---------- Playback (consistent root register, correctly voiced) ----------
 
 // Helper: get anchored MIDI so all playback starts from same base register

@@ -295,34 +295,68 @@ svg#wheel {
   height: 26px;
 }
 
-/* ---------- Optimized Glow Animation ---------- */
-
-/* Define the color dynamically with --glow-color from JS */
-:root {
-  --glow-color: #fff;
-}
-
-/* Instead of GaussianBlur filters, use drop-shadow (GPU fast) */
+/* Stable glowing effect for lines and circles */
 .glow-active {
-  animation: glowPulse 0.8s ease-out;
-  will-change: filter, opacity;
+  stroke-width: 2px !important;
+  opacity: 1;
+  animation: spokeGlow 0.8s ease-out forwards;
 }
 
-@keyframes glowPulse {
+/* Gentle brightness pulse — no filter, no shrink */
+@keyframes spokeGlow {
   0% {
-    opacity: 1;
-    filter: drop-shadow(0 0 0 var(--glow-color));
-  }
-  25% {
-    opacity: 1;
-    filter: drop-shadow(0 0 6px var(--glow-color));
+    stroke: var(--glow-color, white);
+    stroke-opacity: 0.7;
   }
   50% {
-    opacity: 1;
-    filter: drop-shadow(0 0 9px var(--glow-color));
+    stroke: var(--glow-color, white);
+    stroke-opacity: 1;
   }
   100% {
-    opacity: 1;
-    filter: drop-shadow(0 0 0 var(--glow-color));
+    stroke: var(--glow-color, white);
+    stroke-opacity: 0.8;
   }
 }
+
+text.note-label.glow-active {
+  fill: var(--glow-color, white);
+  filter: brightness(1.8);
+  animation: iosGlowText 0.8s ease-out forwards;
+}
+
+@keyframes iosGlowText {
+  0% { fill-opacity: 1; text-shadow: 0 0 6px var(--glow-color, white); }
+  50% { fill-opacity: 1; text-shadow: 0 0 12px var(--glow-color, white); }
+  100% { fill-opacity: 1; text-shadow: 0 0 0 var(--glow-color, white); }
+}
+
+/* Special animation for cloned spoke glow */
+.spoke-glow {
+  stroke-linecap: round;
+  animation: spokeClonePulse 0.7s ease-out forwards;
+}
+
+@keyframes spokeClonePulse {
+  0% {
+    stroke-opacity: 0;
+    filter: brightness(1.2);
+  }
+  30% {
+    stroke-opacity: 1;
+    filter: brightness(2);
+  }
+  100% {
+    stroke-opacity: 0;
+    filter: brightness(1);
+  }
+}
+
+/* bright white halo for spokes — subtle, glowy edge */
+.spoke-halo {
+  opacity: 0;
+  transition: opacity 0.7s ease-out;
+  mix-blend-mode: screen;     /* merges glow with colors below */
+  pointer-events: none;
+  filter: blur(1.2px) brightness(1.5);
+}
+
