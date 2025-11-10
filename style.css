@@ -46,8 +46,8 @@ svg#wheel {
 
 @media (max-width: 768px) {
   svg#wheel {
-    width: 94vw;
-    height: 94vw;
+    width: 95vw;
+    height: 95vw;
     max-width: none;
     max-height: none;
   }
@@ -182,6 +182,8 @@ svg#wheel {
               inset 0 0 12px rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: transform 0.15s ease, filter 0.3s ease;
+  gap: 2px; /* replaces vertical margins */
+  padding: 2px 0; /* minimal visual border inside */
 }
 
 .mode-tile:hover {
@@ -193,8 +195,8 @@ svg#wheel {
   background-color: rgba(0, 0, 0, 0.75);
   color: white;
   border: none;
-  border-radius: 12px;
-  padding: clamp(4px, 0.4vw, 6px) clamp(6px, 1vw, 10px);
+  border-radius: 8px;
+  padding: 4px 6px;
   font-family: 'Cardo', serif;
   font-size: clamp(13px, 1.2vw, 16px);
   cursor: pointer;
@@ -202,7 +204,7 @@ svg#wheel {
   text-align: center;
   width: 100%;
   box-sizing: border-box;
-  margin: 2px 0;
+  margin: 0; /* 🔹 remove gaps causing fat color stripes */
   box-shadow: 0 0 2px rgba(255, 255, 255, 0.15);
 }
 
@@ -210,41 +212,48 @@ svg#wheel {
   background-color: rgba(25, 25, 25, 0.85);
   box-shadow: 0 0 4px rgba(255, 255, 255, 0.25);
 }
+
 .mode-tile .key-btn.active {
   background-color: rgba(255, 255, 255, 0.15);
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
 }
 
+/* ===== MOBILE: Make tiles match desktop look, 7 per row, tight spacing ===== */
 @media (max-width: 768px) {
-  /* force exactly 7 tiles across on small screens */
+  /* Force exactly 7 columns without overflow */
   #key-rows {
-    gap: 0;               /* no flex gap — we’ll use margins instead */
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    column-gap: 2px;    /* tiny gutter; set to 1px if you want them wider */
+    row-gap: 2px;
     margin-top: 2px;
-    justify-content: center;
+    justify-items: stretch;
+    align-items: stretch;
+  }
+
+  /* Tile = thin colored frame; dark interior (no big colored padding) */
+ @media (max-width: 768px) {
+  #key-rows {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    column-gap: 3px;
+    row-gap: 3px;
+    justify-items: center;
   }
 
   .mode-tile {
-    flex: 0 0 calc(100% / 7.22);
-    max-width: calc(100% / 7.22);
-    min-width: calc(100% / 7.22);
-    margin: 1px 0.5px;    /* tiny side margin instead of gap */
+    max-width: none;
+    min-width: 0;
+    gap: 1px;
+    padding: 1px 0;
   }
 
   .mode-tile .key-btn {
-    font-size: 0.6rem;
-    line-height: 1.05;
-    padding: 1px 1px;
-    border-radius: 5px;
-white-space: normal;
-word-break: break-word;
-text-align: center;
+    font-size: 0.55rem;
+    padding: 3px 4px;
+    border-radius: 6px;
   }
-
-  /* optional: make long names wrap instead of truncate */
-  /* .mode-tile .key-btn { white-space: normal; word-break: break-word; } */
 }
-
-
 
 /* --- Pulse effect for note highlights --- */
 .text-pulse {
