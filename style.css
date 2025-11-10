@@ -236,7 +236,7 @@ svg#wheel {
     font-size: 0.58rem;
     line-height: 1;
     padding: 1px 1px;
-    border-radius: 5px;
+    border-radius: 1px;
     margin: 0;                /* no vertical gaps between numeral/name */
 white-space: normal;
 word-break: break-word;
