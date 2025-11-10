@@ -216,33 +216,39 @@ svg#wheel {
 }
 
 @media (max-width: 768px) {
-  /* force exactly 7 tiles across on small screens */
+  /* ensure full-width 7 across */
   #key-rows {
-    gap: 0;               /* no flex gap — we’ll use margins instead */
-    margin-top: 2px;
+    gap: 0;
+    margin-top: 1px;
     justify-content: center;
   }
 
   .mode-tile {
-    flex: 0 0 calc(100% / 7.22);
-    max-width: calc(100% / 7.22);
-    min-width: calc(100% / 7.22);
-    margin: 1px 0.5px;    /* tiny side margin instead of gap */
+    flex: 0 0 calc(100% / 7.1);
+    max-width: calc(100% / 7.1);
+    min-width: calc(100% / 7.1);
+    margin: 0.5px;
+    padding: 0; /* tighter vertical space */
   }
 
+  /* tighten button spacing and sizing */
   .mode-tile .key-btn {
-    font-size: 0.6rem;
-    line-height: 1.05;
+    font-size: 0.58rem;
+    line-height: 1;
     padding: 1px 1px;
     border-radius: 5px;
+    margin: 0;                /* no vertical gaps between numeral/name */
 white-space: normal;
 word-break: break-word;
 text-align: center;
   }
 
-  /* optional: make long names wrap instead of truncate */
-  /* .mode-tile .key-btn { white-space: normal; word-break: break-word; } */
+  /* remove space between stacked elements */
+  .mode-tile .key-btn + .key-btn {
+    margin-top: 0.5px;
+  }
 }
+
 
 
 
