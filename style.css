@@ -235,9 +235,9 @@ svg#wheel {
     line-height: 1.05;
     padding: 1px 1px;
     border-radius: 5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+white-space: normal;
+word-break: break-word;
+text-align: center;
   }
 
   /* optional: make long names wrap instead of truncate */
