@@ -245,41 +245,74 @@ svg#wheel {
       inset 0 0 6px rgba(255, 255, 255, 0.08);
   }
 
-  /* Buttons: small, stacked tight, no extra colored bands */
+/* ===== MOBILE (identical to desktop style, just resized) ===== */
+@media (max-width: 768px) {
+  #key-rows {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    column-gap: 3px;
+    row-gap: 4px;
+    justify-items: center;
+  }
+
+  .mode-tile {
+    /* same style as desktop */
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    border-radius: 4px;
+    background: radial-gradient(
+      circle at center,
+      var(--tile-color) 0%,
+      var(--tile-color) 40%,
+      #0d0d0d 130%
+    ) !important;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.15),
+                inset 0 0 12px rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.15s ease, filter 0.3s ease;
+    padding: 0;        /* prevent extra colored area */
+    margin: 0;
+    overflow: visible;
+  }
+
+  .mode-tile:hover {
+    transform: scale(1.03);
+    filter: brightness(1.15);
+  }
+
+  /* identical button design, just scaled down */
   .mode-tile .key-btn {
-    margin: 0;                /* kill gaps that show tile color */
-    padding: 2px 3px;         /* compact like desktop */
-    font-size: 0.56rem;       /* a hair smaller for SE; adjust if needed */
-    line-height: 1.05;
-    border-radius: 6px;
-    background-color: rgba(0, 0, 0, 0.78);
-    white-space: normal;      /* allow wrapping (you wanted full names) */
-    word-break: break-word;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 3px 4px;
+    font-family: 'Cardo', serif;
+    font-size: 0.55rem;   /* slightly smaller to fit names */
+    cursor: pointer;
     text-align: center;
+    width: 100%;
+    margin: 1px 0;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.15);
+    line-height: 1.1;
+    white-space: normal;
+    word-break: break-word;
   }
 
-  /* Minimal space + thin COLORED divider between Roman and name */
-  .mode-tile .roman-btn {
-    position: relative;
-    margin-bottom: 2px;       /* tiny gap */
-  }
-  .mode-tile .roman-btn::after {
-    content: "";
-    position: absolute;
-    left: 10%;
-    right: 10%;
-    bottom: -1px;
-    height: 1px;
-    background: var(--tile-color);  /* thin colored line like desktop vibe */
-    pointer-events: none;
+  .mode-tile .key-btn.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
   }
 
-  /* Keep name compact too */
-  .mode-tile .key-name {
-    font-size: 0.56rem;
-    line-height: 1.05;
+  .mode-tile .key-btn:hover {
+    background-color: rgba(25, 25, 25, 0.85);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.25);
   }
 }
+
 
 /* --- Pulse effect for note highlights --- */
 .text-pulse {
