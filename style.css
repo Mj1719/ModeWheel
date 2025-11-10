@@ -215,58 +215,69 @@ svg#wheel {
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
 }
 
+/* ===== MOBILE: Make tiles match desktop look, 7 per row, tight spacing ===== */
 @media (max-width: 768px) {
-  /* 7 columns exactly across */
+  /* Force exactly 7 columns without overflow */
   #key-rows {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    column-gap: 2px;
+    column-gap: 2px;    /* tiny gutter; set to 1px if you want them wider */
     row-gap: 2px;
     margin-top: 2px;
     justify-items: stretch;
     align-items: stretch;
   }
 
-  /* match desktop tile proportions — very thin color border */
+  /* Tile = thin colored frame; dark interior (no big colored padding) */
   .mode-tile {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    padding: 0;                  /* remove vertical excess */
+    min-width: 0;            /* allow shrink inside grid cell */
+    margin: 0;               /* grid controls spacing */
+    padding: 0;              /* remove extra colored area */
     border-radius: 4px;
-    margin: 0;
-    box-shadow: 0 0 4px rgba(255,255,255,0.1),
-                inset 0 0 8px rgba(255,255,255,0.08);
-    background: radial-gradient(
-      circle at center,
-      var(--tile-color) 0%,
-      var(--tile-color) 35%,
-      #0d0d0d 120%
-    ) !important;
+
+    /* Colored border, dark fill inside (desktop-like) */
+    border: 1px solid var(--tile-color);
+    background: #0d0d0d !important;
+
+    /* Slight desktop-like glow, but subtler for mobile */
+    box-shadow:
+      0 0 4px rgba(255, 255, 255, 0.12),
+      inset 0 0 6px rgba(255, 255, 255, 0.08);
   }
 
-  /* make both buttons proportionally smaller but identical spacing to desktop */
+  /* Buttons: small, stacked tight, no extra colored bands */
   .mode-tile .key-btn {
-    font-size: 0.55rem;
-    padding: 2px 2px;
-    margin: 0;                    /* remove the big colored space */
+    margin: 0;                /* kill gaps that show tile color */
+    padding: 2px 3px;         /* compact like desktop */
+    font-size: 0.56rem;       /* a hair smaller for SE; adjust if needed */
+    line-height: 1.05;
     border-radius: 6px;
-    background-color: rgba(0, 0, 0, 0.75);
-    white-space: normal;          /* wrap long mode names */
+    background-color: rgba(0, 0, 0, 0.78);
+    white-space: normal;      /* allow wrapping (you wanted full names) */
     word-break: break-word;
     text-align: center;
-    line-height: 1.1;
   }
 
-  /* minimal gap between Roman numeral and name */
-  .mode-tile .key-btn + .key-btn {
-    margin-top: 1px;
+  /* Minimal space + thin COLORED divider between Roman and name */
+  .mode-tile .roman-btn {
+    position: relative;
+    margin-bottom: 2px;       /* tiny gap */
+  }
+  .mode-tile .roman-btn::after {
+    content: "";
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: -1px;
+    height: 1px;
+    background: var(--tile-color);  /* thin colored line like desktop vibe */
+    pointer-events: none;
   }
 
-  /* make sure wrapped names don’t add excess height */
-  .mode-tile .key-btn:last-child {
-    padding-bottom: 2px;
+  /* Keep name compact too */
+  .mode-tile .key-name {
+    font-size: 0.56rem;
+    line-height: 1.05;
   }
 }
 
