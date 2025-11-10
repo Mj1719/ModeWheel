@@ -216,48 +216,57 @@ svg#wheel {
 }
 
 @media (max-width: 768px) {
-  /* Use grid to force exactly 7 columns */
+  /* 7 columns exactly across */
   #key-rows {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    column-gap: 0px;       /* tiny gaps so 7 fits */
-    row-gap: 3px;
+    column-gap: 2px;
+    row-gap: 2px;
     margin-top: 2px;
     justify-items: stretch;
     align-items: stretch;
   }
 
-  /* Each tile fills its grid cell (no overflow) */
+  /* match desktop tile proportions — very thin color border */
   .mode-tile {
-    min-width: 0;          /* allow shrink inside grid cell */
-    max-width: none;
-    margin: 0;             /* grid handles spacing */
-    padding: 2px;          /* reduce colored padding top/bottom */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    padding: 0;                  /* remove vertical excess */
     border-radius: 4px;
+    margin: 0;
+    box-shadow: 0 0 4px rgba(255,255,255,0.1),
+                inset 0 0 8px rgba(255,255,255,0.08);
+    background: radial-gradient(
+      circle at center,
+      var(--tile-color) 0%,
+      var(--tile-color) 35%,
+      #0d0d0d 120%
+    ) !important;
   }
 
-  /* Tight buttons; full wrapping for names */
+  /* make both buttons proportionally smaller but identical spacing to desktop */
   .mode-tile .key-btn {
-    font-size: 0.60rem;    /* slightly smaller to avoid wrapping Roman */
-    line-height: 1.05;     /* tighter vertical rhythm */
-    padding: 2px 3px;
-    margin: 0;             /* remove extra colored space between buttons */
+    font-size: 0.55rem;
+    padding: 2px 2px;
+    margin: 0;                    /* remove the big colored space */
     border-radius: 6px;
-    white-space: normal;   /* allow wrapping */
+    background-color: rgba(0, 0, 0, 0.75);
+    white-space: normal;          /* wrap long mode names */
     word-break: break-word;
     text-align: center;
+    line-height: 1.1;
   }
 
-  /* Slightly emphasize Roman; tiny separator space */
-  .mode-tile .roman-btn {
-    font-size: 0.64rem;
-    margin-bottom: 1px;    /* minimal space between Roman and name */
+  /* minimal gap between Roman numeral and name */
+  .mode-tile .key-btn + .key-btn {
+    margin-top: 1px;
   }
 
-  /* Names wrap but stay compact */
-  .mode-tile .key-name {
-    font-size: 0.60rem;
-    line-height: 1.05;
+  /* make sure wrapped names don’t add excess height */
+  .mode-tile .key-btn:last-child {
+    padding-bottom: 2px;
   }
 }
 
