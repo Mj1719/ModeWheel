@@ -46,8 +46,8 @@ svg#wheel {
 
 @media (max-width: 768px) {
   svg#wheel {
-    width: 95vw;
-    height: 95vw;
+    width: 94vw;
+    height: 94vw;
     max-width: none;
     max-height: none;
   }
@@ -215,103 +215,35 @@ svg#wheel {
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
 }
 
-/* ===== MOBILE: Make tiles match desktop look, 7 per row, tight spacing ===== */
 @media (max-width: 768px) {
-  /* Force exactly 7 columns without overflow */
+  /* force exactly 7 tiles across on small screens */
   #key-rows {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    column-gap: 2px;    /* tiny gutter; set to 1px if you want them wider */
-    row-gap: 2px;
+    gap: 0;               /* no flex gap — we’ll use margins instead */
     margin-top: 2px;
-    justify-items: stretch;
-    align-items: stretch;
-  }
-
-  /* Tile = thin colored frame; dark interior (no big colored padding) */
-  .mode-tile {
-    min-width: 0;            /* allow shrink inside grid cell */
-    margin: 0;               /* grid controls spacing */
-    padding: 0;              /* remove extra colored area */
-    border-radius: 4px;
-
-    /* Colored border, dark fill inside (desktop-like) */
-    border: 1px solid var(--tile-color);
-    background: #0d0d0d !important;
-
-    /* Slight desktop-like glow, but subtler for mobile */
-    box-shadow:
-      0 0 4px rgba(255, 255, 255, 0.12),
-      inset 0 0 6px rgba(255, 255, 255, 0.08);
-  }
-
-/* ===== MOBILE (identical to desktop style, just resized) ===== */
-@media (max-width: 768px) {
-  #key-rows {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    column-gap: 3px;
-    row-gap: 4px;
-    justify-items: center;
-  }
-
-  .mode-tile {
-    /* same style as desktop */
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
     justify-content: center;
-    border-radius: 4px;
-    background: radial-gradient(
-      circle at center,
-      var(--tile-color) 0%,
-      var(--tile-color) 40%,
-      #0d0d0d 130%
-    ) !important;
-    box-shadow: 0 0 6px rgba(255, 255, 255, 0.15),
-                inset 0 0 12px rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: transform 0.15s ease, filter 0.3s ease;
-    padding: 0;        /* prevent extra colored area */
-    margin: 0;
-    overflow: visible;
   }
 
-  .mode-tile:hover {
-    transform: scale(1.03);
-    filter: brightness(1.15);
+  .mode-tile {
+    flex: 0 0 calc(100% / 7.22);
+    max-width: calc(100% / 7.22);
+    min-width: calc(100% / 7.22);
+    margin: 1px 0.5px;    /* tiny side margin instead of gap */
   }
 
-  /* identical button design, just scaled down */
   .mode-tile .key-btn {
-    background-color: rgba(0, 0, 0, 0.75);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 3px 4px;
-    font-family: 'Cardo', serif;
-    font-size: 0.55rem;   /* slightly smaller to fit names */
-    cursor: pointer;
-    text-align: center;
-    width: 100%;
-    margin: 1px 0;
-    box-shadow: 0 0 2px rgba(255, 255, 255, 0.15);
-    line-height: 1.1;
-    white-space: normal;
-    word-break: break-word;
+    font-size: 0.6rem;
+    line-height: 1.05;
+    padding: 1px 1px;
+    border-radius: 5px;
+white-space: normal;
+word-break: break-word;
+text-align: center;
   }
 
-  .mode-tile .key-btn.active {
-    background-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
-  }
-
-  .mode-tile .key-btn:hover {
-    background-color: rgba(25, 25, 25, 0.85);
-    box-shadow: 0 0 4px rgba(255, 255, 255, 0.25);
-  }
+  /* optional: make long names wrap instead of truncate */
+  /* .mode-tile .key-btn { white-space: normal; word-break: break-word; } */
 }
+
 
 
 /* --- Pulse effect for note highlights --- */
