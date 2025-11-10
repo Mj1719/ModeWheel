@@ -6,9 +6,7 @@
   --glow: #cfe6ff;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 html, body {
   height: 100%;
@@ -35,6 +33,7 @@ html, body {
   max-width: 980px;
 }
 
+/* --- WHEEL SIZE & LAYOUT --- */
 svg#wheel {
   width: 80vmin;
   max-width: 720px;
@@ -43,6 +42,15 @@ svg#wheel {
   display: block;
   user-select: none;
   touch-action: none;
+}
+
+@media (max-width: 768px) {
+  svg#wheel {
+    width: 94vw;
+    height: 94vw;
+    max-width: none;
+    max-height: none;
+  }
 }
 
 /* --- Wheel Elements --- */
@@ -66,16 +74,14 @@ svg#wheel {
   pointer-events: none;
 }
 
+/* --- Color spokes --- */
 .spoke {
   stroke-width: 6;
   vector-effect: non-scaling-stroke;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
-
-.spoke.on {
-  opacity: 1;
-}
+.spoke.on { opacity: 1; }
 
 .center {
   fill: #111;
@@ -91,17 +97,12 @@ svg#wheel {
   cursor: pointer;
   transition: fill 0.25s ease, filter 0.3s ease, stroke 0.25s ease;
 }
-
-.interval-wedge:hover {
-  filter: brightness(1.3);
-}
-
+.interval-wedge:hover { filter: brightness(1.3); }
 .interval-wedge.active {
   fill: #ffffff55;
   stroke: #eee;
   filter: drop-shadow(0 0 12px #fff);
 }
-
 .interval-label {
   fill: #ffffff;
   font-family: 'Cardo', serif;
@@ -133,7 +134,6 @@ svg#wheel {
   color: #ffffff;
   cursor: pointer;
 }
-
 .interval-btn.active {
   box-shadow: inset 0 2px 8px rgba(153, 170, 255, 0.06);
   color: var(--glow);
@@ -141,17 +141,14 @@ svg#wheel {
 }
 
 /* Hide playback buttons */
-#action-controls {
-  display: none;
-}
+#action-controls { display: none; }
 
-/* --- Mode Tiles (restored to v14 proportions) --- */
+/* --- Mode Tiles --- */
 #key-area {
   width: 100%;
   max-width: 880px;
   overflow: visible;
 }
-
 #key-rows {
   display: flex;
   flex-wrap: wrap;
@@ -213,30 +210,34 @@ svg#wheel {
   background-color: rgba(25, 25, 25, 0.85);
   box-shadow: 0 0 4px rgba(255, 255, 255, 0.25);
 }
-
 .mode-tile .key-btn.active {
   background-color: rgba(255, 255, 255, 0.15);
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+/* --- Mode tiles (mobile: fit 7 per row) --- */
+@media (max-width: 768px) {
+  .mode-tile {
+    flex: 0 1 calc(100% / 7.2);
+    max-width: calc(100% / 7.2);
+    min-width: calc(100% / 7.2);
+  }
+
+  .mode-tile .key-btn {
+    font-size: 0.7rem;
+    padding: 2px 4px;
+    border-radius: 8px;
+  }
 }
 
 /* --- Pulse effect for note highlights --- */
 .text-pulse {
   animation: pulseOnce 0.7s ease-out;
 }
-
 @keyframes pulseOnce {
-  0% {
-    opacity: 0;
-    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
-  }
-  20% {
-    opacity: 1;
-    filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.95));
-  }
-  100% {
-    opacity: 0;
-    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
-  }
+  0% { opacity: 0; filter: drop-shadow(0 0 0 rgba(255,255,255,0)); }
+  20% { opacity: 1; filter: drop-shadow(0 0 18px rgba(255,255,255,0.95)); }
+  100% { opacity: 0; filter: drop-shadow(0 0 0 rgba(255,255,255,0)); }
 }
 
 /* --- Mode Control Panel --- */
@@ -249,24 +250,14 @@ svg#wheel {
   font-family: 'Cardo', serif;
   color: #ddd;
 }
-
 .control-group {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
 }
-
-.control-label {
-  font-size: 13px;
-  opacity: 0.8;
-}
-
-.control-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+.control-label { font-size: 13px; opacity: 0.8; }
+.control-row { display: flex; align-items: center; gap: 6px; }
 
 .control-group button {
   background: #222;
@@ -278,13 +269,11 @@ svg#wheel {
   font-size: 18px;
   cursor: pointer;
 }
-
 #family-display, #notes-display {
   min-width: 70px;
   text-align: center;
   font-weight: 600;
 }
-
 #index-input {
   background: #111;
   border: 1px solid #555;
@@ -295,68 +284,40 @@ svg#wheel {
   height: 26px;
 }
 
-/* Stable glowing effect for lines and circles */
+/* --- Glow + Spoke Effects --- */
 .glow-active {
   stroke-width: 2px !important;
   opacity: 1;
   animation: spokeGlow 0.8s ease-out forwards;
 }
-
-/* Gentle brightness pulse — no filter, no shrink */
 @keyframes spokeGlow {
-  0% {
-    stroke: var(--glow-color, white);
-    stroke-opacity: 0.7;
-  }
-  50% {
-    stroke: var(--glow-color, white);
-    stroke-opacity: 1;
-  }
-  100% {
-    stroke: var(--glow-color, white);
-    stroke-opacity: 0.8;
-  }
+  0% { stroke: var(--glow-color, white); stroke-opacity: 0.7; }
+  50% { stroke: var(--glow-color, white); stroke-opacity: 1; }
+  100% { stroke: var(--glow-color, white); stroke-opacity: 0.8; }
 }
-
 text.note-label.glow-active {
   fill: var(--glow-color, white);
   filter: brightness(1.8);
   animation: iosGlowText 0.8s ease-out forwards;
 }
-
 @keyframes iosGlowText {
   0% { fill-opacity: 1; text-shadow: 0 0 6px var(--glow-color, white); }
   50% { fill-opacity: 1; text-shadow: 0 0 12px var(--glow-color, white); }
   100% { fill-opacity: 1; text-shadow: 0 0 0 var(--glow-color, white); }
 }
-
-/* Special animation for cloned spoke glow */
 .spoke-glow {
   stroke-linecap: round;
   animation: spokeClonePulse 0.7s ease-out forwards;
 }
-
 @keyframes spokeClonePulse {
-  0% {
-    stroke-opacity: 0;
-    filter: brightness(1.2);
-  }
-  30% {
-    stroke-opacity: 1;
-    filter: brightness(2);
-  }
-  100% {
-    stroke-opacity: 0;
-    filter: brightness(1);
-  }
+  0% { stroke-opacity: 0; filter: brightness(1.2); }
+  30% { stroke-opacity: 1; filter: brightness(2); }
+  100% { stroke-opacity: 0; filter: brightness(1); }
 }
-
-/* bright white halo for spokes — subtle, glowy edge */
 .spoke-halo {
   opacity: 0;
   transition: opacity 0.7s ease-out;
-  mix-blend-mode: screen;     /* merges glow with colors below */
+  mix-blend-mode: screen;
   pointer-events: none;
   filter: blur(1.2px) brightness(1.5);
 }
-
