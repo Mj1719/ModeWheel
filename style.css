@@ -46,8 +46,8 @@ svg#wheel {
 
 @media (max-width: 768px) {
   svg#wheel {
-    width: 94vw;
-    height: 94vw;
+    width: 95vw;
+    height: 95vw;
     max-width: none;
     max-height: none;
   }
@@ -216,41 +216,50 @@ svg#wheel {
 }
 
 @media (max-width: 768px) {
-  /* ensure full-width 7 across */
+  /* Use grid to force exactly 7 columns */
   #key-rows {
-    gap: 0;
-    margin-top: 1px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    column-gap: 2px;       /* tiny gaps so 7 fits */
+    row-gap: 3px;
+    margin-top: 2px;
+    justify-items: stretch;
+    align-items: stretch;
   }
 
+  /* Each tile fills its grid cell (no overflow) */
   .mode-tile {
-    flex: 0 0 calc(100% / 7.1);
-    max-width: calc(100% / 7.1);
-    min-width: calc(100% / 7.1);
-    margin: 0.5px;
-    padding: 0; /* tighter vertical space */
+    min-width: 0;          /* allow shrink inside grid cell */
+    max-width: none;
+    margin: 0;             /* grid handles spacing */
+    padding: 2px;          /* reduce colored padding top/bottom */
+    border-radius: 4px;
   }
 
-  /* tighten button spacing and sizing */
+  /* Tight buttons; full wrapping for names */
   .mode-tile .key-btn {
-    font-size: 0.58rem;
-    line-height: 1;
-    padding: 1px 1px;
-    border-radius: 5px;
-    margin: 0;                /* no vertical gaps between numeral/name */
-white-space: normal;
-word-break: break-word;
-text-align: center;
+    font-size: 0.60rem;    /* slightly smaller to avoid wrapping Roman */
+    line-height: 1.05;     /* tighter vertical rhythm */
+    padding: 2px 3px;
+    margin: 0;             /* remove extra colored space between buttons */
+    border-radius: 6px;
+    white-space: normal;   /* allow wrapping */
+    word-break: break-word;
+    text-align: center;
   }
 
-  /* remove space between stacked elements */
-  .mode-tile .key-btn + .key-btn {
-    margin-top: 0.5px;
+  /* Slightly emphasize Roman; tiny separator space */
+  .mode-tile .roman-btn {
+    font-size: 0.64rem;
+    margin-bottom: 1px;    /* minimal space between Roman and name */
+  }
+
+  /* Names wrap but stay compact */
+  .mode-tile .key-name {
+    font-size: 0.60rem;
+    line-height: 1.05;
   }
 }
-
-
-
 
 /* --- Pulse effect for note highlights --- */
 .text-pulse {
