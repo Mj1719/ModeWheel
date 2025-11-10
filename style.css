@@ -220,7 +220,7 @@ svg#wheel {
   #key-rows {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    column-gap: 2px;       /* tiny gaps so 7 fits */
+    column-gap: 0px;       /* tiny gaps so 7 fits */
     row-gap: 3px;
     margin-top: 2px;
     justify-items: stretch;
