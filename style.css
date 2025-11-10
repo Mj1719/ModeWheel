@@ -215,33 +215,35 @@ svg#wheel {
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
 }
 
-/* --- Mode tiles (mobile: fit 7 per row) --- */
 @media (max-width: 768px) {
-  /* Ensure exactly 7 tiles per row with tight margins */
-  .mode-tile {
-    flex: 0 1 calc(100% / 7.05);
-    max-width: calc(100% / 7.05);
-    min-width: calc(100% / 7.05);
-    margin: 1px;
-  }
-
-  /* Compact text and padding */
-  .mode-tile .key-btn {
-    font-size: 0.62rem;
-    line-height: 1.1;
-    padding: 1px 2px;
-    border-radius: 6px;
-    white-space: normal;
-    word-break: break-word;
-    text-align: center;
-  }
-
-  /* Optional: slightly tighten vertical spacing */
+  /* force exactly 7 tiles across on small screens */
   #key-rows {
-    gap: 1px;
-    margin-top: 1px;
+    gap: 0;               /* no flex gap — we’ll use margins instead */
+    margin-top: 2px;
+    justify-content: center;
   }
+
+  .mode-tile {
+    flex: 0 0 calc(100% / 7.22);
+    max-width: calc(100% / 7.22);
+    min-width: calc(100% / 7.22);
+    margin: 1px 0.5px;    /* tiny side margin instead of gap */
+  }
+
+  .mode-tile .key-btn {
+    font-size: 0.6rem;
+    line-height: 1.05;
+    padding: 1px 1px;
+    border-radius: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* optional: make long names wrap instead of truncate */
+  /* .mode-tile .key-btn { white-space: normal; word-break: break-word; } */
 }
+
 
 
 /* --- Pulse effect for note highlights --- */
