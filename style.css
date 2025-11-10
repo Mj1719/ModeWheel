@@ -217,18 +217,32 @@ svg#wheel {
 
 /* --- Mode tiles (mobile: fit 7 per row) --- */
 @media (max-width: 768px) {
+  /* Ensure exactly 7 tiles per row with tight margins */
   .mode-tile {
-    flex: 0 1 calc(100% / 7.2);
-    max-width: calc(100% / 7.2);
-    min-width: calc(100% / 7.2);
+    flex: 0 1 calc(100% / 7.05);
+    max-width: calc(100% / 7.05);
+    min-width: calc(100% / 7.05);
+    margin: 1px;
   }
 
+  /* Compact text and padding */
   .mode-tile .key-btn {
-    font-size: 0.7rem;
-    padding: 2px 4px;
-    border-radius: 8px;
+    font-size: 0.62rem;
+    line-height: 1.1;
+    padding: 1px 2px;
+    border-radius: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Optional: slightly tighten vertical spacing */
+  #key-rows {
+    gap: 3px;
+    margin-top: 2px;
   }
 }
+
 
 /* --- Pulse effect for note highlights --- */
 .text-pulse {
