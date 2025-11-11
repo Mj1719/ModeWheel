@@ -287,31 +287,34 @@ svg#wheel {
 
 /* ===== MOBILE: Make tiles match desktop look, 7 per row, tight spacing ===== */
 @media (max-width: 768px) {
-  /* Force exactly 7 columns without overflow */
   #key-rows {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     column-gap: 3px;
     row-gap: 1px;
+
+    /* Center the entire grid horizontally */
+    justify-content: center;
     justify-items: center;
+
+    margin: 0 auto;   /* centers the grid container itself */
     margin-top: 2px;
   }
 
   .mode-tile {
     max-width: none;
     min-width: 0;
-    gap: 1px;          /* minimal space inside tile */
-    padding: 1px 0;    /* thin colored band like desktop */
+    gap: 1px;
+    padding: 1px 0;
   }
 
   .mode-tile .key-btn {
     font-size: 0.55rem;
     padding: 3px 4px;
     border-radius: 6px;
-    margin: 2px 0;     /* preserves the thin colored band between buttons */
+    margin: 2px 0;
   }
 }
-
 
 /* --- Pulse effect for note highlights --- */
 .text-pulse {
