@@ -285,36 +285,40 @@ svg#wheel {
   }
 }
 
-/* ===== MOBILE: Make tiles match desktop look, 7 per row, tight spacing ===== */
+/* ===== MOBILE: 7 tiles centered, desktop look preserved ===== */
 @media (max-width: 768px) {
+  /* Pick a tile width that fits 7 across on small phones (SE width ~375px) */
   #key-rows {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, 13.5vw);  /* ~50–52px per tile on small screens */
     column-gap: 3px;
     row-gap: 1px;
 
-    /* Center the entire grid horizontally */
-    justify-content: center;
-    justify-items: center;
+    /* Center the whole grid */
+    justify-content: center;   /* centers the columns block */
+    justify-items: stretch;    /* tile fills its cell */
+    align-items: stretch;
 
-    margin: 0 auto;   /* centers the grid container itself */
-    margin-top: 2px;
+    width: 100%;
+    margin: 2px auto 0 auto;   /* center container */
   }
 
   .mode-tile {
-    max-width: none;
+    /* keep desktop style but remove internal extra space */
     min-width: 0;
-    gap: 1px;
-    padding: 1px 0;
+    max-width: none;
+    gap: 2px;
+    padding: 2px 0;
   }
 
   .mode-tile .key-btn {
-    font-size: 0.55rem;
-    padding: 3px 4px;
-    border-radius: 6px;
     margin: 2px 0;
+    padding: 3px 4px;
+    font-size: 0.55rem;  /* small so names fit */
+    border-radius: 8px;
   }
 }
+
 
 /* --- Pulse effect for note highlights --- */
 .text-pulse {
