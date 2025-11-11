@@ -218,42 +218,100 @@ svg#wheel {
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
 }
 
+/* ===== DESKTOP RESTORE ===== */
+@media (min-width: 769px) {
+  #key-rows {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .mode-tile {
+    flex: 1 1 110px;
+    max-width: 100px;
+    min-width: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    border-radius: 4px;
+    overflow: visible;
+    box-sizing: border-box;
+    background: radial-gradient(
+      circle at center,
+      var(--tile-color) 0%,
+      var(--tile-color) 40%,
+      #0d0d0d 130%
+    ) !important;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.15),
+                inset 0 0 12px rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.15s ease, filter 0.3s ease;
+  }
+
+  .mode-tile:hover {
+    transform: scale(1.04);
+    filter: brightness(1.25);
+  }
+
+  /* restore the colored band between roman & name */
+  .mode-tile .key-btn {
+    margin: 2px 0;                /* colored band returns */
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 5px 8px;
+    font-family: 'Cardo', serif;
+    font-size: clamp(13px, 1.2vw, 16px);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.15);
+  }
+
+  .mode-tile .key-btn:hover {
+    background-color: rgba(25, 25, 25, 0.85);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.25);
+  }
+
+  .mode-tile .key-btn.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+  }
+}
+
 /* ===== MOBILE: Make tiles match desktop look, 7 per row, tight spacing ===== */
 @media (max-width: 768px) {
   /* Force exactly 7 columns without overflow */
-  #key-rows {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    column-gap: 2px;    /* tiny gutter; set to 1px if you want them wider */
-    row-gap: 2px;
-    margin-top: 2px;
-    justify-items: stretch;
-    align-items: stretch;
-  }
-
-  /* Tile = thin colored frame; dark interior (no big colored padding) */
- @media (max-width: 768px) {
   #key-rows {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     column-gap: 3px;
     row-gap: 1px;
     justify-items: center;
+    margin-top: 2px;
   }
 
   .mode-tile {
     max-width: none;
     min-width: 0;
-    gap: 1px;
-    padding: 1px 0;
+    gap: 1px;          /* minimal space inside tile */
+    padding: 1px 0;    /* thin colored band like desktop */
   }
 
   .mode-tile .key-btn {
     font-size: 0.55rem;
     padding: 3px 4px;
     border-radius: 6px;
+    margin: 2px 0;     /* preserves the thin colored band between buttons */
   }
 }
+
 
 /* --- Pulse effect for note highlights --- */
 .text-pulse {
@@ -265,7 +323,7 @@ svg#wheel {
   100% { opacity: 0; filter: drop-shadow(0 0 0 rgba(255,255,255,0)); }
 }
 
-/* --- Mode Control Panel --- */
+/* ===== MODE CONTROLS (Desktop & Mobile) ===== */
 #mode-controls {
   display: flex;
   justify-content: center;
@@ -275,14 +333,24 @@ svg#wheel {
   font-family: 'Cardo', serif;
   color: #ddd;
 }
+
 .control-group {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
 }
-.control-label { font-size: 13px; opacity: 0.8; }
-.control-row { display: flex; align-items: center; gap: 6px; }
+
+.control-label {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
 
 .control-group button {
   background: #222;
@@ -292,22 +360,48 @@ svg#wheel {
   width: 26px;
   height: 26px;
   font-size: 18px;
+  line-height: 24px;
   cursor: pointer;
+  box-shadow: 0 0 6px rgba(255,255,255,0.08), inset 0 0 6px rgba(255,255,255,0.06);
 }
-#family-display, #notes-display {
-  min-width: 70px;
+
+#family-display,
+#notes-display {
+  min-width: 78px;             /* a touch wider for desktop polish */
   text-align: center;
   font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #0f0f0f;
+  border: 1px solid #333;
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.04);
 }
+
 #index-input {
   background: #111;
   border: 1px solid #555;
   color: #fff;
   border-radius: 6px;
   text-align: center;
-  width: 70px;
-  height: 26px;
+  width: 76px;
+  height: 28px;
+  font-size: 14px;
+  box-shadow: inset 0 0 6px rgba(255,255,255,0.06);
 }
+
+/* Mobile tightening */
+@media (max-width: 768px) {
+  #mode-controls { gap: 16px; }
+  .control-label { font-size: 12px; }
+  .control-group button {
+    width: 24px; height: 24px; font-size: 16px;
+  }
+  #family-display, #notes-display {
+    min-width: 66px; padding: 3px 6px; border-radius: 5px;
+  }
+  #index-input { width: 66px; height: 24px; font-size: 13px; }
+}
+
 
 /* --- Glow + Spoke Effects --- */
 .glow-active {
