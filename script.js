@@ -204,10 +204,10 @@ const MODE_FAMILIES = {
       [0,1,2,5,7,8,10], // -3,
     ]
   },
-  "Heptatonic 13": {
+  "Melodic Locrian": {
     familyIndex: 13, // -11 / +11 = 22
     noteCount: 7,
-    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7"],
+    names: ["Melodic Locrian", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7"],
     sets: [
       [0,1,3,5,6,9,11], // -1,
       [0,2,4,5,8,10,11], // +4,
@@ -218,10 +218,10 @@ const MODE_FAMILIES = {
       [0,1,2,4,6,7,10], // -6 (flattest)
     ]
   },
-  "Heptatonic 14": {
+  "Lydian b2 b3": {
     familyIndex: 14, // -11 / +11 = 22
     noteCount: 7,
-    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7"],
+    names: ["Lydian b2 b3", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7"],
     sets: [
       [0,1,3,6,7,9,11], // +1,
       [0,2,5,6,8,10,11], // +6,
@@ -232,10 +232,10 @@ const MODE_FAMILIES = {
       [0,1,2,4,7,8,10], // -4,
     ]
   },
-  "Heptatonic 15": {
+  "Harmonic Altered": {
     familyIndex: 15, // -11 / +11 = 22
     noteCount: 7,
-    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7"],
+    names: ["Harmonic Altered", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7"],
     sets: [
       [0,1,3,4,6,8,11], // -3,
       [0,2,3,5,7,10,11], // +2,
@@ -247,10 +247,10 @@ const MODE_FAMILIES = {
     ]
   },
 
-  "Heptatonic 16": {
+  "Lydian Augmented b2": {
     familyIndex: 16, // -11 / +11 = 22
     noteCount: 7,
-    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7"],
+    names: ["Lydian Augmented b2", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7"],
     sets: [
       [0,1,4,6,8,9,11], // +3,
       [0,3,5,7,8,10,11], // +8,
