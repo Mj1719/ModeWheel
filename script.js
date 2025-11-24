@@ -7,6 +7,2495 @@ const INTERVALS = ["Root","m2","M2","m3","M3","P4","Tritone","P5","m6","M6","m7"
 
 // Mode families with noteCount + familyIndex metadata
 const MODE_FAMILIES = {
+  "Augmented Triad": {
+    familyIndex: 1,
+    noteCount: 3,
+    names: ["Augmented Triad"],
+    sets: [
+      [0,4,8],
+    ]
+  },
+  "Tritonic 2": {
+    familyIndex: 2, // -2 / +2 = 4
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,4,9], // +1,
+      [0,5,8], // +1,
+      [0,3,7], // -2 (flattest)
+    ]
+  },
+  "Tritonic 3": {
+    familyIndex: 3, // -2 / +2 = 4
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,5,9], // +2,
+      [0,4,7], // -1,
+      [0,3,8], // -1 (flattest)
+    ]
+  },
+  "Tritonic 4": {
+    familyIndex: 4, // -3 / +3 = 6
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,5,10], // +3,
+      [0,5,7], // +0,
+      [0,2,7], // -3 (flattest)
+    ]
+  },
+  "Tritonic 5": {
+    familyIndex: 5, // -3 / +3 = 6
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,3,9], // +0,
+      [0,6,9], // +3,
+      [0,3,6], // -3 (flattest)
+    ]
+  },
+  "Tritonic 6": {
+    familyIndex: 6, // -4 / +4 = 8
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,4,10], // +2,
+      [0,6,8], // +2,
+      [0,2,6], // -4 (flattest)
+    ]
+  },
+  "Tritonic 7": {
+    familyIndex: 7, // -4 / +4 = 8
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,6,10], // +4,
+      [0,4,6], // -2,
+      [0,2,8], // -2 (flattest)
+    ]
+  },
+  "Tritonic 8": {
+    familyIndex: 8, // -5 / +5 = 10
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,5,11], // +4,
+      [0,6,7], // +1,
+      [0,1,6], // -5 (flattest)
+    ]
+  },
+  "Tritonic 9": {
+    familyIndex: 9, // -5 / +5 = 10
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,6,11], // +5,
+      [0,5,6], // -1,
+      [0,1,7], // -4 (flattest)
+    ]
+  },
+  "Tritonic 10": {
+    familyIndex: 10, // -5 / +5 = 10
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,3,10], // +1,
+      [0,7,9], // +4,
+      [0,2,5], // -5 (flattest)
+    ]
+  },
+  "Tritonic 11": {
+    familyIndex: 11, // -5 / +5 = 10
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,2,9], // -1,
+      [0,7,10], // +5,
+      [0,3,5], // -4 (flattest)
+    ]
+  },
+  "Tritonic 12": {
+    familyIndex: 12, // -6 / +6 = 12
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,4,11], // +3,
+      [0,7,8], // +3,
+      [0,1,5], // -6 (flattest)
+    ]
+  },
+  "Tritonic 13": {
+    familyIndex: 13, // -6 / +6 = 12
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,7,11], // +6,
+      [0,4,5], // -3,
+      [0,1,8], // -3 (flattest)
+    ]
+  },
+  "Tritonic 14": {
+    familyIndex: 14, // -6 / +6 = 12
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,2,10], // +0,
+      [0,8,10], // +6,
+      [0,2,4], // -6 (flattest)
+    ]
+  },
+  "Tritonic 15": {
+    familyIndex: 15, // -7 / +7 = 14
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,3,11], // +2,
+      [0,8,9], // +5,
+      [0,1,4], // -7 (flattest)
+    ]
+  },
+  "Tritonic 16": {
+    familyIndex: 16, // -7 / +7 = 14
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,1,9], // -2,
+      [0,8,11], // +7,
+      [0,3,4], // -5 (flattest)
+    ]
+  },
+  "Tritonic 17": {
+    familyIndex: 17, // -8 / +8 = 16
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,2,11], // +1,
+      [0,9,10], // +7,
+      [0,1,3], // -8 (flattest)
+    ]
+  },
+  "Tritonic 18": {
+    familyIndex: 18, // -8 / +8 = 16
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,1,10], // -1,
+      [0,9,11], // +8,
+      [0,2,3], // -7 (flattest)
+    ]
+  },
+  "Tritonic 19": {
+    familyIndex: 19, // -9 / +9 = 18
+    noteCount: 3,
+    names: ["Mode 1", "Mode 2", "Mode 3"],
+    sets: [
+      [0,1,11], // +0,
+      [0,10,11], // +9,
+      [0,1,2], // -9 (flattest)
+    ]
+  },
+// 4 note scales
+"Fully Diminished": {
+    familyIndex: 1,
+    noteCount: 4,
+    names: ["Fully Diminished"],
+    sets: [
+      [0,3,6,9],
+    ]
+  },
+  "Tetratonic 2": {
+    familyIndex: 2, // -3 / +3 = 6
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,3,6,10], // +1,
+      [0,3,7,9], // +1,
+      [0,4,6,9], // +1,
+      [0,2,5,8], // -3 (flattest)
+    ]
+  },
+  "Tetratonic 3": {
+    familyIndex: 3, // -3 / +3 = 6
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,4,7,10], // +3,
+      [0,3,6,8], // -1,
+      [0,3,5,9], // -1,
+      [0,2,6,9], // -1 (flattest)
+    ]
+  },
+  "Tetratonic 4": {
+    familyIndex: 4, // -4 / +4 = 8
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,4,7,11], // +4,
+      [0,3,7,8], // +0,
+      [0,4,5,9], // +0,
+      [0,1,5,8], // -4 (flattest)
+    ]
+  },
+  "Tetratonic 5": {
+    familyIndex: 5, // -4 / +4 = 8
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,2,6,10], // +0,
+      [0,4,8,10], // +4,
+      [0,4,6,8], // +0,
+      [0,2,4,8], // -4 (flattest)
+    ]
+  },
+  "Tetratonic 6": {
+    familyIndex: 6, // -4 / +4 = 8
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,3,5,10], // +0,
+      [0,2,7,9], // +0,
+      [0,5,7,10], // +4,
+      [0,2,5,7], // -4 (flattest)
+    ]
+  },
+  "Tetratonic 7": {
+    familyIndex: 7, // -4 / +4 = 8
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,3,7,10], // +2,
+      [0,4,7,9], // +2,
+      [0,3,5,8], // -2,
+      [0,2,5,9], // -2 (flattest)
+    ]
+  },
+  "Tetratonic 8": {
+    familyIndex: 8, // -4 / +4 = 8
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,4,6,10], // +2,
+      [0,2,6,8], // -2,
+      [0,4,6,10], // +2,
+      [0,2,6,8], // -2 (flattest)
+    ]
+  },
+  "Tetratonic 9": {
+    familyIndex: 9, // -6 / +6 = 12
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,3,6,11], // +2,
+      [0,3,8,9], // +2,
+      [0,5,6,9], // +2,
+      [0,1,4,7], // -6 (flattest)
+    ]
+  },
+  "Tetratonic 10": {
+    familyIndex: 10, // -6 / +6 = 12
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,3,7,11], // +3,
+      [0,4,8,9], // +3,
+      [0,4,5,8], // -1,
+      [0,1,4,8], // -5 (flattest)
+    ]
+  },
+  "Tetratonic 11": {
+    familyIndex: 11, // -6 / +6 = 12
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,4,6,11], // +3,
+      [0,2,7,8], // -1,
+      [0,5,6,10], // +3,
+      [0,1,5,7], // -5 (flattest)
+    ]
+  },
+  "Tetratonic 12": {
+    familyIndex: 12, // -6 / +6 = 12
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,4,8,11], // +5,
+      [0,4,7,8], // +1,
+      [0,3,4,8], // -3,
+      [0,1,5,9], // -3 (flattest)
+    ]
+  },
+  "Tetratonic 13": {
+    familyIndex: 13, // -6 / +6 = 12
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,5,7,11], // +5,
+      [0,2,6,7], // -3,
+      [0,4,5,10], // +1,
+      [0,1,6,8], // -3 (flattest)
+    ]
+  },
+  "Tetratonic 14": {
+    familyIndex: 14, // -6 / +6 = 12
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,5,8,11], // +6,
+      [0,3,6,7], // -2,
+      [0,3,4,9], // -2,
+      [0,1,6,9], // -2 (flattest)
+    ]
+  },
+  "Tetratonic 15": {
+    familyIndex: 15, // -6 / +6 = 12
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,2,5,10], // -1,
+      [0,3,8,10], // +3,
+      [0,5,7,9], // +3,
+      [0,2,4,7], // -5 (flattest)
+    ]
+  },
+  "Tetratonic 16": {
+    familyIndex: 16, // -6 / +6 = 12
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,2,7,10], // +1,
+      [0,5,8,10], // +5,
+      [0,3,5,7], // -3,
+      [0,2,4,9], // -3 (flattest)
+    ]
+  },
+  "Tetratonic 17": {
+    familyIndex: 17, // -7 / +7 = 14
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,2,6,11], // +1,
+      [0,4,9,10], // +5,
+      [0,5,6,8], // +1,
+      [0,1,3,7], // -7 (flattest)
+    ]
+  },
+  "Tetratonic 18": {
+    familyIndex: 18, // -7 / +7 = 14
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,3,5,11], // +1,
+      [0,2,8,9], // +1,
+      [0,6,7,10], // +5,
+      [0,1,4,6], // -7 (flattest)
+    ]
+  },
+  "Tetratonic 19": {
+    familyIndex: 19, // -7 / +7 = 14
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,1,6,10], // -1,
+      [0,5,9,11], // +7,
+      [0,4,6,7], // -1,
+      [0,2,3,8], // -5 (flattest)
+    ]
+  },
+  "Tetratonic 20": {
+    familyIndex: 20, // -7 / +7 = 14
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,3,4,10], // -1,
+      [0,1,7,9], // -1,
+      [0,6,8,11], // +7,
+      [0,2,5,6], // -5 (flattest)
+    ]
+  },
+  "Tetratonic 21": {
+    familyIndex: 21, // -8 / +8 = 16
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,1,6,11], // +0,
+      [0,5,10,11], // +8,
+      [0,5,6,7], // +0,
+      [0,1,2,7], // -8 (flattest)
+    ]
+  },
+  "Tetratonic 22": {
+    familyIndex: 22, // -8 / +8 = 16
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,2,5,11], // +0,
+      [0,3,9,10], // +4,
+      [0,6,7,9], // +4,
+      [0,1,3,6], // -8 (flattest)
+    ]
+  },
+  "Tetratonic 23": {
+    familyIndex: 23, // -8 / +8 = 16
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,2,7,11], // +2,
+      [0,5,9,10], // +6,
+      [0,4,5,7], // -2,
+      [0,1,3,8], // -6 (flattest)
+    ]
+  },
+  "Tetratonic 24": {
+    familyIndex: 24, // -8 / +8 = 16
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,3,4,11], // +0,
+      [0,1,8,9], // +0,
+      [0,7,8,11], // +8,
+      [0,1,4,5], // -8 (flattest)
+    ]
+  },
+  "Tetratonic 25": {
+    familyIndex: 25, // -8 / +8 = 16
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,3,8,11], // +4,
+      [0,5,8,9], // +4,
+      [0,3,4,7], // -4,
+      [0,1,4,9], // -4 (flattest)
+    ]
+  },
+  "Tetratonic 26": {
+    familyIndex: 26, // -8 / +8 = 16
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,4,5,11], // +2,
+      [0,1,7,8], // -2,
+      [0,6,7,11], // +6,
+      [0,1,5,6], // -6 (flattest)
+    ]
+  },
+  "Tetratonic 27": {
+    familyIndex: 27, // -8 / +8 = 16
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,1,5,10], // -2,
+      [0,4,9,11], // +6,
+      [0,5,7,8], // +2,
+      [0,2,3,7], // -6 (flattest)
+    ]
+  },
+  "Tetratonic 28": {
+    familyIndex: 28, // -8 / +8 = 16
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,5,6,11], // +4,
+      [0,1,6,7], // -4,
+      [0,5,6,11], // +4,
+      [0,1,6,7], // -4 (flattest)
+    ]
+  },
+  "Tetratonic 29": {
+    familyIndex: 29, // -8 / +8 = 16
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,2,3,9], // -4,
+      [0,1,7,10], // +0,
+      [0,6,9,11], // +8,
+      [0,3,5,6], // -4 (flattest)
+    ]
+  },
+  "Tetratonic 30": {
+    familyIndex: 30, // -8 / +8 = 16
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,2,4,10], // -2,
+      [0,2,8,10], // +2,
+      [0,6,8,10], // +6,
+      [0,2,4,6], // -6 (flattest)
+    ]
+  },
+  "Tetratonic 31": {
+    familyIndex: 31, // -10 / +10 = 20
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,1,5,11], // -1,
+      [0,4,10,11], // +7,
+      [0,6,7,8], // +3,
+      [0,1,2,6], // -9 (flattest)
+    ]
+  },
+  "Tetratonic 32": {
+    familyIndex: 32, // -10 / +10 = 20
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,1,7,11], // +1,
+      [0,6,10,11], // +9,
+      [0,4,5,6], // -3,
+      [0,1,2,8], // -7 (flattest)
+    ]
+  },
+  "Tetratonic 33": {
+    familyIndex: 33, // -10 / +10 = 20
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,2,4,11], // -1,
+      [0,2,9,10], // +3,
+      [0,7,8,10], // +7,
+      [0,1,3,5], // -9 (flattest)
+    ]
+  },
+  "Tetratonic 34": {
+    familyIndex: 34, // -10 / +10 = 20
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,2,8,11], // +3,
+      [0,6,9,10], // +7,
+      [0,3,4,6], // -5,
+      [0,1,3,9], // -5 (flattest)
+    ]
+  },
+  "Tetratonic 35": {
+    familyIndex: 35, // -10 / +10 = 20
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,1,4,10], // -3,
+      [0,3,9,11], // +5,
+      [0,6,8,9], // +5,
+      [0,2,3,6], // -7 (flattest)
+    ]
+  },
+  "Tetratonic 36": {
+    familyIndex: 36, // -10 / +10 = 20
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,2,3,10], // -3,
+      [0,1,8,10], // +1,
+      [0,7,9,11], // +9,
+      [0,2,4,5], // -7 (flattest)
+    ]
+  },
+  "Tetratonic 37": {
+    familyIndex: 37, // -12 / +12 = 24
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,1,4,11], // -2,
+      [0,3,10,11], // +6,
+      [0,7,8,9], // +6,
+      [0,1,2,5], // -10 (flattest)
+    ]
+  },
+  "Tetratonic 38": {
+    familyIndex: 38, // -12 / +12 = 24
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,1,8,11], // +2,
+      [0,7,10,11], // +10,
+      [0,3,4,5], // -6,
+      [0,1,2,9], // -6 (flattest)
+    ]
+  },
+  "Tetratonic 39": {
+    familyIndex: 39, // -12 / +12 = 24
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,2,3,11], // -2,
+      [0,1,9,10], // +2,
+      [0,8,9,11], // +10,
+      [0,1,3,4], // -10 (flattest)
+    ]
+  },
+  "Tetratonic 40": {
+    familyIndex: 40, // -12 / +12 = 24
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,1,3,10], // -4,
+      [0,2,9,11], // +4,
+      [0,7,9,10], // +8,
+      [0,2,3,5], // -8 (flattest)
+    ]
+  },
+  "Tetratonic 41": {
+    familyIndex: 41, // -14 / +14 = 28
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,1,3,11], // -3,
+      [0,2,10,11], // +5,
+      [0,8,9,10], // +9,
+      [0,1,2,4], // -11 (flattest)
+    ]
+  },
+  "Tetratonic 42": {
+    familyIndex: 42, // -14 / +14 = 28
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,1,2,10], // -5,
+      [0,1,9,11], // +3,
+      [0,8,10,11], // +11,
+      [0,2,3,4], // -9 (flattest)
+    ]
+  },
+  "Tetratonic 43": {
+    familyIndex: 43, // -16 / +16 = 32
+    noteCount: 4,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    sets: [
+      [0,1,2,11], // -4,
+      [0,1,10,11], // +4,
+      [0,9,10,11], // +12,
+      [0,1,2,3], // -12 (flattest)
+    ]
+  },
+// 5 note scales
+  Pentatonic: {
+    familyIndex: 1,
+    noteCount: 5,
+    names: ["Major Pentatonic","Suspended Pentatonic","Blues Minor","Blues Major","Minor Pentatonic"],
+    sets: [
+      [0,2,4,7,9],
+      [0,2,5,7,10],
+      [0,3,5,8,10],
+      [0,2,5,7,9],
+      [0,3,5,7,10]
+    ]
+  },
+  "Pentatonic 2": {
+    familyIndex: 2, // -4 / +4 = 8
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,4,7,10], // -1,
+      [0,2,5,8,10], // +1,
+      [0,3,6,8,10], // +3,
+      [0,3,5,7,9], // +0,
+      [0,2,4,6,9], // -3 (flattest)
+    ]
+  },
+  "Pentatonic 3": {
+    familyIndex: 3, // -5 / +5 = 10
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,3,5,8,11], // +3,
+      [0,2,5,8,9], // +0,
+      [0,3,6,7,10], // +2,
+      [0,3,4,7,9], // -1,
+      [0,1,4,6,9], // -4 (flattest)
+    ]
+  },
+  "Pentatonic 4": {
+    familyIndex: 4, // -5 / +5 = 10
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,3,6,8,11], // +4,
+      [0,3,5,8,9], // +1,
+      [0,2,5,6,9], // -2,
+      [0,3,4,7,10], // +0,
+      [0,1,4,7,9], // -3 (flattest)
+    ]
+  },
+  "Pentatonic 5": {
+    familyIndex: 5, // -6 / +6 = 12
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,5,7,11], // +1,
+      [0,3,5,9,10], // +3,
+      [0,2,6,7,9], // +0,
+      [0,4,5,7,10], // +2,
+      [0,1,3,6,8], // -6 (flattest)
+    ]
+  },
+  "Pentatonic 6": {
+    familyIndex: 6, // -6 / +6 = 12
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,3,5,7,11], // +2,
+      [0,2,4,8,9], // -1,
+      [0,2,6,7,10], // +1,
+      [0,4,5,8,10], // +3,
+      [0,1,4,6,8], // -5 (flattest)
+    ]
+  },
+  "Pentatonic 7": {
+    familyIndex: 7, // -6 / +6 = 12
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,5,6,10], // -1,
+      [0,3,4,8,10], // +1,
+      [0,1,5,7,9], // -2,
+      [0,4,6,8,11], // +5,
+      [0,2,4,7,8], // -3 (flattest)
+    ]
+  },
+  "Pentatonic 8": {
+    familyIndex: 8, // -6 / +6 = 12
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,5,7,10], // -1,
+      [0,4,6,9,11], // +6,
+      [0,2,5,7,8], // -2,
+      [0,3,5,6,10], // +0,
+      [0,2,3,7,9], // -3 (flattest)
+    ]
+  },
+  "Pentatonic 9": {
+    familyIndex: 9, // -6 / +6 = 12
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,4,6,10], // -2,
+      [0,2,4,8,10], // +0,
+      [0,2,6,8,10], // +2,
+      [0,4,6,8,10], // +4,
+      [0,2,4,6,8], // -4 (flattest)
+    ]
+  },
+  "Pentatonic 10": {
+    familyIndex: 10, // -7 / +7 = 14
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,4,7,11], // +0,
+      [0,2,5,9,10], // +2,
+      [0,3,7,8,10], // +4,
+      [0,4,5,7,9], // +1,
+      [0,1,3,5,8], // -7 (flattest)
+    ]
+  },
+  "Pentatonic 11": {
+    familyIndex: 11, // -7 / +7 = 14
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,5,8,11], // +2,
+      [0,3,6,9,10], // +4,
+      [0,3,6,7,9], // +1,
+      [0,3,4,6,9], // -2,
+      [0,1,3,6,9], // -5 (flattest)
+    ]
+  },
+  "Pentatonic 12": {
+    familyIndex: 12, // -7 / +7 = 14
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,3,6,7,11], // +3,
+      [0,3,4,8,9], // +0,
+      [0,1,5,6,9], // -3,
+      [0,4,5,8,11], // +4,
+      [0,1,4,7,8], // -4 (flattest)
+    ]
+  },
+  "Pentatonic 13": {
+    familyIndex: 13, // -7 / +7 = 14
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,4,7,10], // -2,
+      [0,3,6,9,11], // +5,
+      [0,3,6,8,9], // +2,
+      [0,3,5,6,9], // -1,
+      [0,2,3,6,9], // -4 (flattest)
+    ]
+  },
+  "Pentatonic 14": {
+    familyIndex: 14, // -7 / +7 = 14
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,3,7,10], // -2,
+      [0,1,5,8,10], // +0,
+      [0,4,7,9,11], // +7,
+      [0,3,5,7,8], // -1,
+      [0,2,4,5,9], // -4 (flattest)
+    ]
+  },
+  "Pentatonic 15": {
+    familyIndex: 15, // -8 / +8 = 16
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,5,7,11], // +0,
+      [0,4,6,10,11], // +7,
+      [0,2,6,7,8], // -1,
+      [0,4,5,6,10], // +1,
+      [0,1,2,6,8], // -7 (flattest)
+    ]
+  },
+  "Pentatonic 16": {
+    familyIndex: 16, // -8 / +8 = 16
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,5,6,11], // +0,
+      [0,3,4,9,10], // +2,
+      [0,1,6,7,9], // -1,
+      [0,5,6,8,11], // +6,
+      [0,1,3,6,7], // -7 (flattest)
+    ]
+  },
+  "Pentatonic 17": {
+    familyIndex: 17, // -8 / +8 = 16
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,6,8,11], // +3,
+      [0,4,6,9,10], // +5,
+      [0,2,5,6,8], // -3,
+      [0,3,4,6,10], // -1,
+      [0,1,3,7,9], // -4 (flattest)
+    ]
+  },
+  "Pentatonic 18": {
+    familyIndex: 18, // -8 / +8 = 16
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,3,4,7,11], // +1,
+      [0,1,4,8,9], // -2,
+      [0,3,7,8,11], // +5,
+      [0,4,5,8,9], // +2,
+      [0,1,4,5,8], // -6 (flattest)
+    ]
+  },
+  "Pentatonic 19": {
+    familyIndex: 19, // -8 / +8 = 16
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,3,4,8,11], // +2,
+      [0,1,5,8,9], // -1,
+      [0,4,7,8,11], // +6,
+      [0,3,4,7,8], // -2,
+      [0,1,4,5,9], // -5 (flattest)
+    ]
+  },
+  "Pentatonic 20": {
+    familyIndex: 20, // -8 / +8 = 16
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,3,5,6,11], // +1,
+      [0,2,3,8,9], // -2,
+      [0,1,6,7,10], // +0,
+      [0,5,6,9,11], // +7,
+      [0,1,4,6,7], // -6 (flattest)
+    ]
+  },
+  "Pentatonic 21": {
+    familyIndex: 21, // -8 / +8 = 16
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,4,6,10], // -3,
+      [0,3,5,9,11], // +4,
+      [0,2,6,8,9], // +1,
+      [0,4,6,7,10], // +3,
+      [0,2,3,6,8], // -5 (flattest)
+    ]
+  },
+  "Pentatonic 22": {
+    familyIndex: 22, // -9 / +9 = 18
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,4,7,11], // -1,
+      [0,3,6,10,11], // +6,
+      [0,3,7,8,9], // +3,
+      [0,4,5,6,9], // +0,
+      [0,1,2,5,8], // -8 (flattest)
+    ]
+  },
+  "Pentatonic 23": {
+    familyIndex: 23, // -9 / +9 = 18
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,5,8,11], // +1,
+      [0,4,7,10,11], // +8,
+      [0,3,6,7,8], // +0,
+      [0,3,4,5,9], // -3,
+      [0,1,2,6,9], // -6 (flattest)
+    ]
+  },
+  "Pentatonic 24": {
+    familyIndex: 24, // -9 / +9 = 18
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,3,7,11], // -1,
+      [0,1,5,9,10], // +1,
+      [0,4,8,9,11], // +8,
+      [0,4,5,7,8], // +0,
+      [0,1,3,4,8], // -8 (flattest)
+    ]
+  },
+  "Pentatonic 25": {
+    familyIndex: 25, // -9 / +9 = 18
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,4,6,11], // -1,
+      [0,2,4,9,10], // +1,
+      [0,2,7,8,10], // +3,
+      [0,5,6,8,10], // +5,
+      [0,1,3,5,7], // -8 (flattest)
+    ]
+  },
+  "Pentatonic 26": {
+    familyIndex: 26, // -9 / +9 = 18
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,4,8,11], // +1,
+      [0,2,6,9,10], // +3,
+      [0,4,7,8,10], // +5,
+      [0,3,4,6,8], // -3,
+      [0,1,3,5,9], // -6 (flattest)
+    ]
+  },
+  "Pentatonic 27": {
+    familyIndex: 27, // -9 / +9 = 18
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,6,7,11], // +2,
+      [0,4,5,9,10], // +4,
+      [0,1,5,6,8], // -4,
+      [0,4,5,7,11], // +3,
+      [0,1,3,7,8], // -5 (flattest)
+    ]
+  },
+  "Pentatonic 28": {
+    familyIndex: 28, // -9 / +9 = 18
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,3,6,10], // -3,
+      [0,1,4,8,10], // -1,
+      [0,3,7,9,11], // +6,
+      [0,4,6,8,9], // +3,
+      [0,2,4,5,8], // -5 (flattest)
+    ]
+  },
+  "Pentatonic 29": {
+    familyIndex: 29, // -9 / +9 = 18
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,5,6,10], // -2,
+      [0,4,5,9,11], // +5,
+      [0,1,5,7,8], // -3,
+      [0,4,6,7,11], // +4,
+      [0,2,3,7,8], // -4 (flattest)
+    ]
+  },
+  "Pentatonic 30": {
+    familyIndex: 30, // -9 / +9 = 18
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,4,5,10], // -3,
+      [0,2,3,8,10], // -1,
+      [0,1,6,8,10], // +1,
+      [0,5,7,9,11], // +8,
+      [0,2,4,6,7], // -5 (flattest)
+    ]
+  },
+  "Pentatonic 31": {
+    familyIndex: 31, // -10 / +10 = 20
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,3,6,10], // -4,
+      [0,2,5,9,11], // +3,
+      [0,3,7,9,10], // +5,
+      [0,4,6,7,9], // +2,
+      [0,2,3,5,8], // -6 (flattest)
+    ]
+  },
+  "Pentatonic 32": {
+    familyIndex: 32, // -10 / +10 = 20
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,3,7,10], // -3,
+      [0,2,6,9,11], // +4,
+      [0,4,7,9,10], // +6,
+      [0,3,5,6,8], // -2,
+      [0,2,3,5,9], // -5 (flattest)
+    ]
+  },
+  "Pentatonic 33": {
+    familyIndex: 33, // -10 / +10 = 20
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,3,4,6,11], // +0,
+      [0,1,3,8,9], // -3,
+      [0,2,7,8,11], // +4,
+      [0,5,6,9,10], // +6,
+      [0,1,4,5,7], // -7 (flattest)
+    ]
+  },
+  "Pentatonic 34": {
+    familyIndex: 34, // -10 / +10 = 20
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,4,5,10], // -4,
+      [0,3,4,9,11], // +3,
+      [0,1,6,8,9], // +0,
+      [0,5,7,8,11], // +7,
+      [0,2,3,6,7], // -6 (flattest)
+    ]
+  },
+  "Pentatonic 35": {
+    familyIndex: 35, // -11 / +11 = 22
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,4,6,11], // -2,
+      [0,3,5,10,11], // +5,
+      [0,2,7,8,9], // +2,
+      [0,5,6,7,10], // +4,
+      [0,1,2,5,7], // -9 (flattest)
+    ]
+  },
+  "Pentatonic 36": {
+    familyIndex: 36, // -11 / +11 = 22
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,4,8,11], // +0,
+      [0,3,7,10,11], // +7,
+      [0,4,7,8,9], // +4,
+      [0,3,4,5,8], // -4,
+      [0,1,2,5,9], // -7 (flattest)
+    ]
+  },
+  "Pentatonic 37": {
+    familyIndex: 37, // -11 / +11 = 22
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,5,6,11], // -1,
+      [0,4,5,10,11], // +6,
+      [0,1,6,7,8], // -2,
+      [0,5,6,7,11], // +5,
+      [0,1,2,6,7], // -8 (flattest)
+    ]
+  },
+  "Pentatonic 38": {
+    familyIndex: 38, // -11 / +11 = 22
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,6,7,11], // +1,
+      [0,5,6,10,11], // +8,
+      [0,1,5,6,7], // -5,
+      [0,4,5,6,11], // +2,
+      [0,1,2,7,8], // -6 (flattest)
+    ]
+  },
+  "Pentatonic 39": {
+    familyIndex: 39, // -11 / +11 = 22
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,6,8,11], // +2,
+      [0,5,7,10,11], // +9,
+      [0,2,5,6,7], // -4,
+      [0,3,4,5,10], // -2,
+      [0,1,2,7,9], // -5 (flattest)
+    ]
+  },
+  "Pentatonic 40": {
+    familyIndex: 40, // -11 / +11 = 22
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,3,6,11], // -2,
+      [0,1,4,9,10], // +0,
+      [0,3,8,9,11], // +7,
+      [0,5,6,8,9], // +4,
+      [0,1,3,4,7], // -9 (flattest)
+    ]
+  },
+  "Pentatonic 41": {
+    familyIndex: 41, // -11 / +11 = 22
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,3,8,11], // +0,
+      [0,1,6,9,10], // +2,
+      [0,5,8,9,11], // +9,
+      [0,3,4,6,7], // -4,
+      [0,1,3,4,9], // -7 (flattest)
+    ]
+  },
+  "Pentatonic 42": {
+    familyIndex: 42, // -11 / +11 = 22
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,4,5,11], // -2,
+      [0,2,3,9,10], // +0,
+      [0,1,7,8,10], // +2,
+      [0,6,7,9,11], // +9,
+      [0,1,3,5,6], // -9 (flattest)
+    ]
+  },
+  "Pentatonic 43": {
+    familyIndex: 43, // -12 / +12 = 24
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,3,7,11], // -2,
+      [0,2,6,10,11], // +5,
+      [0,4,8,9,10], // +7,
+      [0,4,5,6,8], // -1,
+      [0,1,2,4,8], // -9 (flattest)
+    ]
+  },
+  "Pentatonic 44": {
+    familyIndex: 44, // -12 / +12 = 24
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,2,6,10], // -5,
+      [0,1,5,9,11], // +2,
+      [0,4,8,10,11], // +9,
+      [0,4,6,7,8], // +1,
+      [0,2,3,4,8], // -7 (flattest)
+    ]
+  },
+  "Pentatonic 45": {
+    familyIndex: 45, // -12 / +12 = 24
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,3,5,10], // -5,
+      [0,2,4,9,11], // +2,
+      [0,2,7,9,10], // +4,
+      [0,5,7,8,10], // +6,
+      [0,2,3,5,7], // -7 (flattest)
+    ]
+  },
+  "Pentatonic 46": {
+    familyIndex: 46, // -12 / +12 = 24
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,3,5,10], // -4,
+      [0,1,3,8,10], // -2,
+      [0,2,7,9,11], // +5,
+      [0,5,7,9,10], // +7,
+      [0,2,4,5,7], // -6 (flattest)
+    ]
+  },
+  "Pentatonic 47": {
+    familyIndex: 47, // -13 / +13 = 26
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,3,6,11], // -3,
+      [0,2,5,10,11], // +4,
+      [0,3,8,9,10], // +6,
+      [0,5,6,7,9], // +3,
+      [0,1,2,4,7], // -10 (flattest)
+    ]
+  },
+  "Pentatonic 48": {
+    familyIndex: 48, // -13 / +13 = 26
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,4,5,11], // -3,
+      [0,3,4,10,11], // +4,
+      [0,1,7,8,9], // +1,
+      [0,6,7,8,11], // +8,
+      [0,1,2,5,6], // -10 (flattest)
+    ]
+  },
+  "Pentatonic 49": {
+    familyIndex: 49, // -13 / +13 = 26
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,2,7,10], // -4,
+      [0,1,6,9,11], // +3,
+      [0,5,8,10,11], // +10,
+      [0,3,5,6,7], // -3,
+      [0,2,3,4,9], // -6 (flattest)
+    ]
+  },
+  "Pentatonic 50": {
+    familyIndex: 50, // -13 / +13 = 26
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,3,4,5,11], // -1,
+      [0,1,2,8,9], // -4,
+      [0,1,7,8,11], // +3,
+      [0,6,7,10,11], // +10,
+      [0,1,4,5,6], // -8 (flattest)
+    ]
+  },
+  "Pentatonic 51": {
+    familyIndex: 51, // -14 / +14 = 28
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,3,8,11], // -1,
+      [0,2,7,10,11], // +6,
+      [0,5,8,9,10], // +8,
+      [0,3,4,5,7], // -5,
+      [0,1,2,4,9], // -8 (flattest)
+    ]
+  },
+  "Pentatonic 52": {
+    familyIndex: 52, // -14 / +14 = 28
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,2,5,10], // -6,
+      [0,1,4,9,11], // +1,
+      [0,3,8,10,11], // +8,
+      [0,5,7,8,9], // +5,
+      [0,2,3,4,7], // -8 (flattest)
+    ]
+  },
+  "Pentatonic 53": {
+    familyIndex: 53, // -14 / +14 = 28
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,3,5,11], // -3,
+      [0,1,3,9,10], // -1,
+      [0,2,8,9,11], // +6,
+      [0,6,7,9,10], // +8,
+      [0,1,3,4,6], // -10 (flattest)
+    ]
+  },
+  "Pentatonic 54": {
+    familyIndex: 54, // -14 / +14 = 28
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,3,4,10], // -6,
+      [0,2,3,9,11], // +1,
+      [0,1,7,9,10], // +3,
+      [0,6,8,9,11], // +10,
+      [0,2,3,5,6], // -8 (flattest)
+    ]
+  },
+  "Pentatonic 55": {
+    familyIndex: 55, // -15 / +15 = 30
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,2,6,11], // -4,
+      [0,1,5,10,11], // +3,
+      [0,4,9,10,11], // +10,
+      [0,5,6,7,8], // +2,
+      [0,1,2,3,7], // -11 (flattest)
+    ]
+  },
+  "Pentatonic 56": {
+    familyIndex: 56, // -15 / +15 = 30
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,2,7,11], // -3,
+      [0,1,6,10,11], // +4,
+      [0,5,9,10,11], // +11,
+      [0,4,5,6,7], // -2,
+      [0,1,2,3,8], // -10 (flattest)
+    ]
+  },
+  "Pentatonic 57": {
+    familyIndex: 57, // -15 / +15 = 30
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,3,5,11], // -4,
+      [0,2,4,10,11], // +3,
+      [0,2,8,9,10], // +5,
+      [0,6,7,8,10], // +7,
+      [0,1,2,4,6], // -11 (flattest)
+    ]
+  },
+  "Pentatonic 58": {
+    familyIndex: 58, // -15 / +15 = 30
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,3,4,10], // -5,
+      [0,1,2,8,10], // -3,
+      [0,1,7,9,11], // +4,
+      [0,6,8,10,11], // +11,
+      [0,2,4,5,6], // -7 (flattest)
+    ]
+  },
+  "Pentatonic 59": {
+    familyIndex: 59, // -16 / +16 = 32
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,2,4,10], // -7,
+      [0,1,3,9,11], // +0,
+      [0,2,8,10,11], // +7,
+      [0,6,8,9,10], // +9,
+      [0,2,3,4,6], // -9 (flattest)
+    ]
+  },
+  "Pentatonic 60": {
+    familyIndex: 60, // -17 / +17 = 34
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,2,5,11], // -5,
+      [0,1,4,10,11], // +2,
+      [0,3,9,10,11], // +9,
+      [0,6,7,8,9], // +6,
+      [0,1,2,3,6], // -12 (flattest)
+    ]
+  },
+  "Pentatonic 61": {
+    familyIndex: 61, // -17 / +17 = 34
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,2,8,11], // -2,
+      [0,1,7,10,11], // +5,
+      [0,6,9,10,11], // +12,
+      [0,3,4,5,6], // -6,
+      [0,1,2,3,9], // -9 (flattest)
+    ]
+  },
+  "Pentatonic 62": {
+    familyIndex: 62, // -17 / +17 = 34
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,3,4,11], // -5,
+      [0,2,3,10,11], // +2,
+      [0,1,8,9,10], // +4,
+      [0,7,8,9,11], // +11,
+      [0,1,2,4,5], // -12 (flattest)
+    ]
+  },
+  "Pentatonic 63": {
+    familyIndex: 63, // -17 / +17 = 34
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,2,3,4,11], // -4,
+      [0,1,2,9,10], // -2,
+      [0,1,8,9,11], // +5,
+      [0,7,8,10,11], // +12,
+      [0,1,3,4,5], // -11 (flattest)
+    ]
+  },
+  "Pentatonic 64": {
+    familyIndex: 64, // -19 / +19 = 38
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,2,4,11], // -6,
+      [0,1,3,10,11], // +1,
+      [0,2,9,10,11], // +8,
+      [0,7,8,9,10], // +10,
+      [0,1,2,3,5], // -13 (flattest)
+    ]
+  },
+  "Pentatonic 65": {
+    familyIndex: 65, // -19 / +19 = 38
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,2,3,10], // -8,
+      [0,1,2,9,11], // -1,
+      [0,1,8,10,11], // +6,
+      [0,7,9,10,11], // +13,
+      [0,2,3,4,5], // -10 (flattest)
+    ]
+  },
+  "Pentatonic 66": {
+    familyIndex: 66, // -21 / +21 = 42
+    noteCount: 5,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
+    sets: [
+      [0,1,2,3,11], // -7,
+      [0,1,2,10,11], // +0,
+      [0,1,9,10,11], // +7,
+      [0,8,9,10,11], // +14,
+      [0,1,2,3,4], // -14 (flattest)
+    ]
+  },
+// 6 note scales
+"Whole tone": {
+    familyIndex: 1,
+    noteCount: 6,
+    names: ["Whole Tone"],
+    sets: [
+      [0,2,4,6,8,10],
+    ]
+  },
+  "Hexatonic 2": {
+    familyIndex: 2, // -5 / +5 = 10
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,4,6,8,11], // +1,
+      [0,2,4,6,9,10], // +1,
+      [0,2,4,7,8,10], // +1,
+      [0,2,5,6,8,10], // +1,
+      [0,3,4,6,8,10], // +1,
+      [0,1,3,5,7,9], // -5 (flattest)
+    ]
+  },
+  "Hexatonic 3": {
+    familyIndex: 3, // -5 / +5 = 10
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,3,5,7,9,11], // +5,
+      [0,2,4,6,8,9], // -1,
+      [0,2,4,6,7,10], // -1,
+      [0,2,4,5,8,10], // -1,
+      [0,2,3,6,8,10], // -1,
+      [0,1,4,6,8,10], // -1 (flattest)
+    ]
+  },
+  "Hexatonic 4": {
+    familyIndex: 4, // -6 / +6 = 12
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,4,6,8,11], // +0,
+      [0,3,5,7,10,11], // +6,
+      [0,2,4,7,8,9], // +0,
+      [0,2,5,6,7,10], // +0,
+      [0,3,4,5,8,10], // +0,
+      [0,1,2,5,7,9], // -6 (flattest)
+    ]
+  },
+  "Hexatonic 5": {
+    familyIndex: 5, // -6 / +6 = 12
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,3,6,8,11], // +0,
+      [0,1,4,6,9,10], // +0,
+      [0,3,5,8,9,11], // +6,
+      [0,2,5,6,8,9], // +0,
+      [0,3,4,6,7,10], // +0,
+      [0,1,3,4,7,9], // -6 (flattest)
+    ]
+  },
+  "Hexatonic 6": {
+    familyIndex: 6, // -6 / +6 = 12
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,4,5,8,11], // +0,
+      [0,2,3,6,9,10], // +0,
+      [0,1,4,7,8,10], // +0,
+      [0,3,6,7,9,11], // +6,
+      [0,3,4,6,8,9], // +0,
+      [0,1,3,5,6,9], // -6 (flattest)
+    ]
+  },
+  "Hexatonic 7": {
+    familyIndex: 7, // -6 / +6 = 12
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,4,6,7,11], // +0,
+      [0,2,4,5,9,10], // +0,
+      [0,2,3,7,8,10], // +0,
+      [0,1,5,6,8,10], // +0,
+      [0,4,5,7,9,11], // +6,
+      [0,1,3,5,7,8], // -6 (flattest)
+    ]
+  },
+  "Hexatonic 8": {
+    familyIndex: 8, // -8 / +8 = 16
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,4,6,9,11], // +2,
+      [0,2,4,7,9,10], // +2,
+      [0,2,5,7,8,10], // +2,
+      [0,3,5,6,8,10], // +2,
+      [0,2,3,5,7,9], // -4,
+      [0,1,3,5,7,10], // -4 (flattest)
+    ]
+  },
+  "Hexatonic 9": {
+    familyIndex: 9, // -8 / +8 = 16
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,4,7,8,11], // +2,
+      [0,2,5,6,9,10], // +2,
+      [0,3,4,7,8,10], // +2,
+      [0,1,4,5,7,9], // -4,
+      [0,3,4,6,8,11], // +2,
+      [0,1,3,5,8,9], // -4 (flattest)
+    ]
+  },
+  "Hexatonic 10": {
+    familyIndex: 10, // -8 / +8 = 16
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,5,6,8,11], // +2,
+      [0,3,4,6,9,10], // +2,
+      [0,1,3,6,7,9], // -4,
+      [0,2,5,6,8,11], // +2,
+      [0,3,4,6,9,10], // +2,
+      [0,1,3,6,7,9], // -4 (flattest)
+    ]
+  },
+  "Hexatonic 11": {
+    familyIndex: 11, // -8 / +8 = 16
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,5,7,9,11], // +4,
+      [0,3,5,7,9,10], // +4,
+      [0,2,4,6,7,9], // -2,
+      [0,2,4,5,7,10], // -2,
+      [0,2,3,5,8,10], // -2,
+      [0,1,3,6,8,10], // -2 (flattest)
+    ]
+  },
+  "Hexatonic 12": {
+    familyIndex: 12, // -8 / +8 = 16
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,3,4,7,9,11], // +4,
+      [0,1,4,6,8,9], // -2,
+      [0,3,5,7,8,11], // +4,
+      [0,2,4,5,8,9], // -2,
+      [0,2,3,6,7,10], // -2,
+      [0,1,4,5,8,10], // -2 (flattest)
+    ]
+  },
+  "Hexatonic 13": {
+    familyIndex: 13, // -8 / +8 = 16
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,3,5,6,9,11], // +4,
+      [0,2,3,6,8,9], // -2,
+      [0,1,4,6,7,10], // -2,
+      [0,3,5,6,9,11], // +4,
+      [0,2,3,6,8,9], // -2,
+      [0,1,4,6,7,10], // -2 (flattest)
+    ]
+  },
+  "Hexatonic 14": {
+    familyIndex: 14, // -9 / +9 = 18
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,4,7,9,11], // +3,
+      [0,2,5,7,9,10], // +3,
+      [0,3,5,7,8,10], // +3,
+      [0,2,4,5,7,9], // -3,
+      [0,2,3,5,7,10], // -3,
+      [0,1,3,5,8,10], // -3 (flattest)
+    ]
+  },
+  "Hexatonic 15": {
+    familyIndex: 15, // -9 / +9 = 18
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,5,6,9,11], // +3,
+      [0,3,4,7,9,10], // +3,
+      [0,1,4,6,7,9], // -3,
+      [0,3,5,6,8,11], // +3,
+      [0,2,3,5,8,9], // -3,
+      [0,1,3,6,7,10], // -3 (flattest)
+    ]
+  },
+  "Hexatonic 16": {
+    familyIndex: 16, // -9 / +9 = 18
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,5,7,8,11], // +3,
+      [0,3,5,6,9,10], // +3,
+      [0,2,3,6,7,9], // -3,
+      [0,1,4,5,7,10], // -3,
+      [0,3,4,6,9,11], // +3,
+      [0,1,3,6,8,9], // -3 (flattest)
+    ]
+  },
+  "Hexatonic 17": {
+    familyIndex: 17, // -9 / +9 = 18
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,3,4,7,8,11], // +3,
+      [0,1,4,5,8,9], // -3,
+      [0,3,4,7,8,11], // +3,
+      [0,1,4,5,8,9], // -3,
+      [0,3,4,7,8,11], // +3,
+      [0,1,4,5,8,9], // -3 (flattest)
+    ]
+  },
+  "Hexatonic 18": {
+    familyIndex: 18, // -10 / +10 = 20
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,3,6,8,11], // -1,
+      [0,2,5,7,10,11], // +5,
+      [0,3,5,8,9,10], // +5,
+      [0,2,5,6,7,9], // -1,
+      [0,3,4,5,7,10], // -1,
+      [0,1,2,4,7,9], // -7 (flattest)
+    ]
+  },
+  "Hexatonic 19": {
+    familyIndex: 19, // -10 / +10 = 20
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,4,5,8,11], // -1,
+      [0,3,4,7,10,11], // +5,
+      [0,1,4,7,8,9], // -1,
+      [0,3,6,7,8,11], // +5,
+      [0,3,4,5,8,9], // -1,
+      [0,1,2,5,6,9], // -7 (flattest)
+    ]
+  },
+  "Hexatonic 20": {
+    familyIndex: 20, // -10 / +10 = 20
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,4,6,7,11], // -1,
+      [0,3,5,6,10,11], // +5,
+      [0,2,3,7,8,9], // -1,
+      [0,1,5,6,7,10], // -1,
+      [0,4,5,6,9,11], // +5,
+      [0,1,2,5,7,8], // -7 (flattest)
+    ]
+  },
+  "Hexatonic 21": {
+    familyIndex: 21, // -10 / +10 = 20
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,4,6,9,11], // +1,
+      [0,3,5,8,10,11], // +7,
+      [0,2,5,7,8,9], // +1,
+      [0,3,5,6,7,10], // +1,
+      [0,2,3,4,7,9], // -5,
+      [0,1,2,5,7,10], // -5 (flattest)
+    ]
+  },
+  "Hexatonic 22": {
+    familyIndex: 22, // -10 / +10 = 20
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,4,7,8,11], // +1,
+      [0,3,6,7,10,11], // +7,
+      [0,3,4,7,8,9], // +1,
+      [0,1,4,5,6,9], // -5,
+      [0,3,4,5,8,11], // +1,
+      [0,1,2,5,8,9], // -5 (flattest)
+    ]
+  },
+  "Hexatonic 23": {
+    familyIndex: 23, // -10 / +10 = 20
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,5,6,8,11], // +1,
+      [0,4,5,7,10,11], // +7,
+      [0,1,3,6,7,8], // -5,
+      [0,2,5,6,7,11], // +1,
+      [0,3,4,5,9,10], // +1,
+      [0,1,2,6,7,9], // -5 (flattest)
+    ]
+  },
+  "Hexatonic 24": {
+    familyIndex: 24, // -10 / +10 = 20
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,3,5,8,11], // -1,
+      [0,1,3,6,9,10], // -1,
+      [0,2,5,8,9,11], // +5,
+      [0,3,6,7,9,10], // +5,
+      [0,3,4,6,7,9], // -1,
+      [0,1,3,4,6,9], // -7 (flattest)
+    ]
+  },
+  "Hexatonic 25": {
+    familyIndex: 25, // -10 / +10 = 20
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,3,6,7,11], // -1,
+      [0,1,4,5,9,10], // -1,
+      [0,3,4,8,9,11], // +5,
+      [0,1,5,6,8,9], // -1,
+      [0,4,5,7,8,11], // +5,
+      [0,1,3,4,7,8], // -7 (flattest)
+    ]
+  },
+  "Hexatonic 26": {
+    familyIndex: 26, // -10 / +10 = 20
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,3,6,9,11], // +1,
+      [0,1,4,7,9,10], // +1,
+      [0,3,6,8,9,11], // +7,
+      [0,3,5,6,8,9], // +1,
+      [0,2,3,5,6,9], // -5,
+      [0,1,3,4,7,10], // -5 (flattest)
+    ]
+  },
+  "Hexatonic 27": {
+    familyIndex: 27, // -10 / +10 = 20
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,3,7,8,11], // +1,
+      [0,1,5,6,9,10], // +1,
+      [0,4,5,8,9,11], // +7,
+      [0,1,4,5,7,8], // -5,
+      [0,3,4,6,7,11], // +1,
+      [0,1,3,4,8,9], // -5 (flattest)
+    ]
+  },
+  "Hexatonic 28": {
+    familyIndex: 28, // -10 / +10 = 20
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,4,5,7,11], // -1,
+      [0,2,3,5,9,10], // -1,
+      [0,1,3,7,8,10], // -1,
+      [0,2,6,7,9,11], // +5,
+      [0,4,5,7,9,10], // +5,
+      [0,1,3,5,6,8], // -7 (flattest)
+    ]
+  },
+  "Hexatonic 29": {
+    familyIndex: 29, // -10 / +10 = 20
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,4,5,9,11], // +1,
+      [0,2,3,7,9,10], // +1,
+      [0,1,5,7,8,10], // +1,
+      [0,4,6,7,9,11], // +7,
+      [0,2,3,5,7,8], // -5,
+      [0,1,3,5,6,10], // -5 (flattest)
+    ]
+  },
+  "Hexatonic 30": {
+    familyIndex: 30, // -12 / +12 = 24
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,3,5,7,11], // -3,
+      [0,2,4,6,10,11], // +3,
+      [0,2,4,8,9,10], // +3,
+      [0,2,6,7,8,10], // +3,
+      [0,4,5,6,8,10], // +3,
+      [0,1,2,4,6,8], // -9 (flattest)
+    ]
+  },
+  "Hexatonic 31": {
+    familyIndex: 31, // -12 / +12 = 24
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,3,5,8,11], // -2,
+      [0,2,4,7,10,11], // +4,
+      [0,2,5,8,9,10], // +4,
+      [0,3,6,7,8,10], // +4,
+      [0,3,4,5,7,9], // -2,
+      [0,1,2,4,6,9], // -8 (flattest)
+    ]
+  },
+  "Hexatonic 32": {
+    familyIndex: 32, // -12 / +12 = 24
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,3,6,7,11], // -2,
+      [0,2,5,6,10,11], // +4,
+      [0,3,4,8,9,10], // +4,
+      [0,1,5,6,7,9], // -2,
+      [0,4,5,6,8,11], // +4,
+      [0,1,2,4,7,8], // -8 (flattest)
+    ]
+  },
+  "Hexatonic 33": {
+    familyIndex: 33, // -12 / +12 = 24
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,3,6,9,11], // +0,
+      [0,2,5,8,10,11], // +6,
+      [0,3,6,8,9,10], // +6,
+      [0,3,5,6,7,9], // +0,
+      [0,2,3,4,6,9], // -6,
+      [0,1,2,4,7,10], // -6 (flattest)
+    ]
+  },
+  "Hexatonic 34": {
+    familyIndex: 34, // -12 / +12 = 24
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,3,7,8,11], // +0,
+      [0,2,6,7,10,11], // +6,
+      [0,4,5,8,9,10], // +6,
+      [0,1,4,5,6,8], // -6,
+      [0,3,4,5,7,11], // +0,
+      [0,1,2,4,8,9], // -6 (flattest)
+    ]
+  },
+  "Hexatonic 35": {
+    familyIndex: 35, // -12 / +12 = 24
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,4,5,7,11], // -2,
+      [0,3,4,6,10,11], // +4,
+      [0,1,3,7,8,9], // -2,
+      [0,2,6,7,8,11], // +4,
+      [0,4,5,6,9,10], // +4,
+      [0,1,2,5,6,8], // -8 (flattest)
+    ]
+  },
+  "Hexatonic 36": {
+    familyIndex: 36, // -12 / +12 = 24
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,4,5,9,11], // +0,
+      [0,3,4,8,10,11], // +6,
+      [0,1,5,7,8,9], // +0,
+      [0,4,6,7,8,11], // +6,
+      [0,2,3,4,7,8], // -6,
+      [0,1,2,5,6,10], // -6 (flattest)
+    ]
+  },
+  "Hexatonic 37": {
+    familyIndex: 37, // -12 / +12 = 24
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,4,7,9,11], // +2,
+      [0,3,6,8,10,11], // +8,
+      [0,3,5,7,8,9], // +2,
+      [0,2,4,5,6,9], // -4,
+      [0,2,3,4,7,10], // -4,
+      [0,1,2,5,8,10], // -4 (flattest)
+    ]
+  },
+  "Hexatonic 38": {
+    familyIndex: 38, // -12 / +12 = 24
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,5,6,7,11], // +0,
+      [0,4,5,6,10,11], // +6,
+      [0,1,2,6,7,8], // -6,
+      [0,1,5,6,7,11], // +0,
+      [0,4,5,6,10,11], // +6,
+      [0,1,2,6,7,8], // -6 (flattest)
+    ]
+  },
+  "Hexatonic 39": {
+    familyIndex: 39, // -12 / +12 = 24
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,5,6,9,11], // +2,
+      [0,4,5,8,10,11], // +8,
+      [0,1,4,6,7,8], // -4,
+      [0,3,5,6,7,11], // +2,
+      [0,2,3,4,8,9], // -4,
+      [0,1,2,6,7,10], // -4 (flattest)
+    ]
+  },
+  "Hexatonic 40": {
+    familyIndex: 40, // -12 / +12 = 24
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,5,7,8,11], // +2,
+      [0,4,6,7,10,11], // +8,
+      [0,2,3,6,7,8], // -4,
+      [0,1,4,5,6,10], // -4,
+      [0,3,4,5,9,11], // +2,
+      [0,1,2,6,8,9], // -4 (flattest)
+    ]
+  },
+  "Hexatonic 41": {
+    familyIndex: 41, // -12 / +12 = 24
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,5,7,9,11], // +3,
+      [0,4,6,8,10,11], // +9,
+      [0,2,4,6,7,8], // -3,
+      [0,2,4,5,6,10], // -3,
+      [0,2,3,4,8,10], // -3,
+      [0,1,2,6,8,10], // -3 (flattest)
+    ]
+  },
+  "Hexatonic 42": {
+    familyIndex: 42, // -12 / +12 = 24
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,3,5,7,11], // -2,
+      [0,1,3,5,9,10], // -2,
+      [0,2,4,8,9,11], // +4,
+      [0,2,6,7,9,10], // +4,
+      [0,4,5,7,8,10], // +4,
+      [0,1,3,4,6,8], // -8 (flattest)
+    ]
+  },
+  "Hexatonic 43": {
+    familyIndex: 43, // -12 / +12 = 24
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,3,5,9,11], // +0,
+      [0,1,3,7,9,10], // +0,
+      [0,2,6,8,9,11], // +6,
+      [0,4,6,7,9,10], // +6,
+      [0,2,3,5,6,8], // -6,
+      [0,1,3,4,6,10], // -6 (flattest)
+    ]
+  },
+  "Hexatonic 44": {
+    familyIndex: 44, // -12 / +12 = 24
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,3,7,9,11], // +2,
+      [0,1,5,7,9,10], // +2,
+      [0,4,6,8,9,11], // +8,
+      [0,2,4,5,7,8], // -4,
+      [0,2,3,5,6,10], // -4,
+      [0,1,3,4,8,10], // -4 (flattest)
+    ]
+  },
+  "Hexatonic 45": {
+    familyIndex: 45, // -14 / +14 = 28
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,5,7,11], // -4,
+      [0,1,4,6,10,11], // +2,
+      [0,3,5,9,10,11], // +8,
+      [0,2,6,7,8,9], // +2,
+      [0,4,5,6,7,10], // +2,
+      [0,1,2,3,6,8], // -10 (flattest)
+    ]
+  },
+  "Hexatonic 46": {
+    familyIndex: 46, // -14 / +14 = 28
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,6,8,11], // -2,
+      [0,1,5,7,10,11], // +4,
+      [0,4,6,9,10,11], // +10,
+      [0,2,5,6,7,8], // -2,
+      [0,3,4,5,6,10], // -2,
+      [0,1,2,3,7,9], // -8 (flattest)
+    ]
+  },
+  "Hexatonic 47": {
+    familyIndex: 47, // -14 / +14 = 28
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,3,4,7,11], // -4,
+      [0,2,3,6,10,11], // +2,
+      [0,1,4,8,9,10], // +2,
+      [0,3,7,8,9,11], // +8,
+      [0,4,5,6,8,9], // +2,
+      [0,1,2,4,5,8], // -10 (flattest)
+    ]
+  },
+  "Hexatonic 48": {
+    familyIndex: 48, // -14 / +14 = 28
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,3,5,6,11], // -4,
+      [0,2,4,5,10,11], // +2,
+      [0,2,3,8,9,10], // +2,
+      [0,1,6,7,8,10], // +2,
+      [0,5,6,7,9,11], // +8,
+      [0,1,2,4,6,7], // -10 (flattest)
+    ]
+  },
+  "Hexatonic 49": {
+    familyIndex: 49, // -14 / +14 = 28
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,3,4,8,11], // -2,
+      [0,1,2,6,9,10], // -2,
+      [0,1,5,8,9,11], // +4,
+      [0,4,7,8,10,11], // +10,
+      [0,3,4,6,7,8], // -2,
+      [0,1,3,4,5,9], // -8 (flattest)
+    ]
+  },
+  "Hexatonic 50": {
+    familyIndex: 50, // -14 / +14 = 28
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,4,5,6,11], // -2,
+      [0,2,3,4,9,10], // -2,
+      [0,1,2,7,8,10], // -2,
+      [0,1,6,7,9,11], // +4,
+      [0,5,6,8,10,11], // +10,
+      [0,1,3,5,6,7], // -8 (flattest)
+    ]
+  },
+  "Hexatonic 51": {
+    familyIndex: 51, // -15 / +15 = 30
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,5,8,11], // -3,
+      [0,1,4,7,10,11], // +3,
+      [0,3,6,9,10,11], // +9,
+      [0,3,6,7,8,9], // +3,
+      [0,3,4,5,6,9], // -3,
+      [0,1,2,3,6,9], // -9 (flattest)
+    ]
+  },
+  "Hexatonic 52": {
+    familyIndex: 52, // -15 / +15 = 30
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,6,7,11], // -3,
+      [0,1,5,6,10,11], // +3,
+      [0,4,5,9,10,11], // +9,
+      [0,1,5,6,7,8], // -3,
+      [0,4,5,6,7,11], // +3,
+      [0,1,2,3,7,8], // -9 (flattest)
+    ]
+  },
+  "Hexatonic 53": {
+    familyIndex: 53, // -15 / +15 = 30
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,3,4,8,11], // -3,
+      [0,2,3,7,10,11], // +3,
+      [0,1,5,8,9,10], // +3,
+      [0,4,7,8,9,11], // +9,
+      [0,3,4,5,7,8], // -3,
+      [0,1,2,4,5,9], // -9 (flattest)
+    ]
+  },
+  "Hexatonic 54": {
+    familyIndex: 54, // -15 / +15 = 30
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,3,5,9,11], // -1,
+      [0,2,4,8,10,11], // +5,
+      [0,2,6,8,9,10], // +5,
+      [0,4,6,7,8,10], // +5,
+      [0,2,3,4,6,8], // -7,
+      [0,1,2,4,6,10], // -7 (flattest)
+    ]
+  },
+  "Hexatonic 55": {
+    familyIndex: 55, // -15 / +15 = 30
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,3,7,9,11], // +1,
+      [0,2,6,8,10,11], // +7,
+      [0,4,6,8,9,10], // +7,
+      [0,2,4,5,6,8], // -5,
+      [0,2,3,4,6,10], // -5,
+      [0,1,2,4,8,10], // -5 (flattest)
+    ]
+  },
+  "Hexatonic 56": {
+    familyIndex: 56, // -15 / +15 = 30
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,4,5,6,11], // -3,
+      [0,3,4,5,10,11], // +3,
+      [0,1,2,7,8,9], // -3,
+      [0,1,6,7,8,11], // +3,
+      [0,5,6,7,10,11], // +9,
+      [0,1,2,5,6,7], // -9 (flattest)
+    ]
+  },
+  "Hexatonic 57": {
+    familyIndex: 57, // -15 / +15 = 30
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,3,4,7,11], // -3,
+      [0,1,2,5,9,10], // -3,
+      [0,1,4,8,9,11], // +3,
+      [0,3,7,8,10,11], // +9,
+      [0,4,5,7,8,9], // +3,
+      [0,1,3,4,5,8], // -9 (flattest)
+    ]
+  },
+  "Hexatonic 58": {
+    familyIndex: 58, // -15 / +15 = 30
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,3,5,6,11], // -3,
+      [0,1,3,4,9,10], // -3,
+      [0,2,3,8,9,11], // +3,
+      [0,1,6,7,9,10], // +3,
+      [0,5,6,8,9,11], // +9,
+      [0,1,3,4,6,7], // -9 (flattest)
+    ]
+  },
+  "Hexatonic 59": {
+    familyIndex: 59, // -16 / +16 = 32
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,4,7,11], // -5,
+      [0,1,3,6,10,11], // +1,
+      [0,2,5,9,10,11], // +7,
+      [0,3,7,8,9,10], // +7,
+      [0,4,5,6,7,9], // +1,
+      [0,1,2,3,5,8], // -11 (flattest)
+    ]
+  },
+  "Hexatonic 60": {
+    familyIndex: 60, // -16 / +16 = 32
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,5,6,11], // -5,
+      [0,1,4,5,10,11], // +1,
+      [0,3,4,9,10,11], // +7,
+      [0,1,6,7,8,9], // +1,
+      [0,5,6,7,8,11], // +7,
+      [0,1,2,3,6,7], // -11 (flattest)
+    ]
+  },
+  "Hexatonic 61": {
+    familyIndex: 61, // -16 / +16 = 32
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,6,9,11], // -1,
+      [0,1,5,8,10,11], // +5,
+      [0,4,7,9,10,11], // +11,
+      [0,3,5,6,7,8], // -1,
+      [0,2,3,4,5,9], // -7,
+      [0,1,2,3,7,10], // -7 (flattest)
+    ]
+  },
+  "Hexatonic 62": {
+    familyIndex: 62, // -16 / +16 = 32
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,7,8,11], // -1,
+      [0,1,6,7,10,11], // +5,
+      [0,5,6,9,10,11], // +11,
+      [0,1,4,5,6,7], // -7,
+      [0,3,4,5,6,11], // -1,
+      [0,1,2,3,8,9], // -7 (flattest)
+    ]
+  },
+  "Hexatonic 63": {
+    familyIndex: 63, // -16 / +16 = 32
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,3,4,6,11], // -5,
+      [0,2,3,5,10,11], // +1,
+      [0,1,3,8,9,10], // +1,
+      [0,2,7,8,9,11], // +7,
+      [0,5,6,7,9,10], // +7,
+      [0,1,2,4,5,7], // -11 (flattest)
+    ]
+  },
+  "Hexatonic 64": {
+    familyIndex: 64, // -16 / +16 = 32
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,3,4,5,10], // -7,
+      [0,2,3,4,9,11], // -1,
+      [0,1,2,7,9,10], // -1,
+      [0,1,6,8,9,11], // +5,
+      [0,5,7,8,10,11], // +11,
+      [0,2,3,5,6,7], // -7 (flattest)
+    ]
+  },
+  "Hexatonic 65": {
+    familyIndex: 65, // -18 / +18 = 36
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,3,7,11], // -6,
+      [0,1,2,6,10,11], // +0,
+      [0,1,5,9,10,11], // +6,
+      [0,4,8,9,10,11], // +12,
+      [0,4,5,6,7,8], // +0,
+      [0,1,2,3,4,8], // -12 (flattest)
+    ]
+  },
+  "Hexatonic 66": {
+    familyIndex: 66, // -18 / +18 = 36
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,4,6,11], // -6,
+      [0,1,3,5,10,11], // +0,
+      [0,2,4,9,10,11], // +6,
+      [0,2,7,8,9,10], // +6,
+      [0,5,6,7,8,10], // +6,
+      [0,1,2,3,5,7], // -12 (flattest)
+    ]
+  },
+  "Hexatonic 67": {
+    familyIndex: 67, // -18 / +18 = 36
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,4,8,11], // -4,
+      [0,1,3,7,10,11], // +2,
+      [0,2,6,9,10,11], // +8,
+      [0,4,7,8,9,10], // +8,
+      [0,3,4,5,6,8], // -4,
+      [0,1,2,3,5,9], // -10 (flattest)
+    ]
+  },
+  "Hexatonic 68": {
+    familyIndex: 68, // -18 / +18 = 36
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,5,9,11], // -2,
+      [0,1,4,8,10,11], // +4,
+      [0,3,7,9,10,11], // +10,
+      [0,4,6,7,8,9], // +4,
+      [0,2,3,4,5,8], // -8,
+      [0,1,2,3,6,10], // -8 (flattest)
+    ]
+  },
+  "Hexatonic 69": {
+    familyIndex: 69, // -18 / +18 = 36
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,7,9,11], // +0,
+      [0,1,6,8,10,11], // +6,
+      [0,5,7,9,10,11], // +12,
+      [0,2,4,5,6,7], // -6,
+      [0,2,3,4,5,10], // -6,
+      [0,1,2,3,8,10], // -6 (flattest)
+    ]
+  },
+  "Hexatonic 70": {
+    familyIndex: 70, // -18 / +18 = 36
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,3,4,5,11], // -6,
+      [0,2,3,4,10,11], // +0,
+      [0,1,2,8,9,10], // +0,
+      [0,1,7,8,9,11], // +6,
+      [0,6,7,8,10,11], // +12,
+      [0,1,2,4,5,6], // -12 (flattest)
+    ]
+  },
+  "Hexatonic 71": {
+    familyIndex: 71, // -18 / +18 = 36
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,3,4,9,11], // -2,
+      [0,2,3,8,10,11], // +4,
+      [0,1,6,8,9,10], // +4,
+      [0,5,7,8,9,11], // +10,
+      [0,2,3,4,6,7], // -8,
+      [0,1,2,4,5,10], // -8 (flattest)
+    ]
+  },
+  "Hexatonic 72": {
+    familyIndex: 72, // -18 / +18 = 36
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,3,4,6,11], // -4,
+      [0,1,2,4,9,10], // -4,
+      [0,1,3,8,9,11], // +2,
+      [0,2,7,8,10,11], // +8,
+      [0,5,6,8,9,10], // +8,
+      [0,1,3,4,5,7], // -10 (flattest)
+    ]
+  },
+  "Hexatonic 73": {
+    familyIndex: 73, // -21 / +21 = 42
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,3,6,11], // -7,
+      [0,1,2,5,10,11], // -1,
+      [0,1,4,9,10,11], // +5,
+      [0,3,8,9,10,11], // +11,
+      [0,5,6,7,8,9], // +5,
+      [0,1,2,3,4,7], // -13 (flattest)
+    ]
+  },
+  "Hexatonic 74": {
+    familyIndex: 74, // -21 / +21 = 42
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,3,8,11], // -5,
+      [0,1,2,7,10,11], // +1,
+      [0,1,6,9,10,11], // +7,
+      [0,5,8,9,10,11], // +13,
+      [0,3,4,5,6,7], // -5,
+      [0,1,2,3,4,9], // -11 (flattest)
+    ]
+  },
+  "Hexatonic 75": {
+    familyIndex: 75, // -21 / +21 = 42
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,4,5,11], // -7,
+      [0,1,3,4,10,11], // -1,
+      [0,2,3,9,10,11], // +5,
+      [0,1,7,8,9,10], // +5,
+      [0,6,7,8,9,11], // +11,
+      [0,1,2,3,5,6], // -13 (flattest)
+    ]
+  },
+  "Hexatonic 76": {
+    familyIndex: 76, // -21 / +21 = 42
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,4,9,11], // -3,
+      [0,1,3,8,10,11], // +3,
+      [0,2,7,9,10,11], // +9,
+      [0,5,7,8,9,10], // +9,
+      [0,2,3,4,5,7], // -9,
+      [0,1,2,3,5,10], // -9 (flattest)
+    ]
+  },
+  "Hexatonic 77": {
+    familyIndex: 77, // -21 / +21 = 42
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,2,3,4,5,11], // -5,
+      [0,1,2,3,9,10], // -5,
+      [0,1,2,8,9,11], // +1,
+      [0,1,7,8,10,11], // +7,
+      [0,6,7,9,10,11], // +13,
+      [0,1,3,4,5,6], // -11 (flattest)
+    ]
+  },
+  "Hexatonic 78": {
+    familyIndex: 78, // -24 / +24 = 48
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,3,5,11], // -8,
+      [0,1,2,4,10,11], // -2,
+      [0,1,3,9,10,11], // +4,
+      [0,2,8,9,10,11], // +10,
+      [0,6,7,8,9,10], // +10,
+      [0,1,2,3,4,6], // -14 (flattest)
+    ]
+  },
+  "Hexatonic 79": {
+    familyIndex: 79, // -24 / +24 = 48
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,3,9,11], // -4,
+      [0,1,2,8,10,11], // +2,
+      [0,1,7,9,10,11], // +8,
+      [0,6,8,9,10,11], // +14,
+      [0,2,3,4,5,6], // -10,
+      [0,1,2,3,4,10], // -10 (flattest)
+    ]
+  },
+  "Hexatonic 80": {
+    familyIndex: 80, // -27 / +27 = 54
+    noteCount: 6,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6"],
+    sets: [
+      [0,1,2,3,4,11], // -9,
+      [0,1,2,3,10,11], // -3,
+      [0,1,2,9,10,11], // +3,
+      [0,1,8,9,10,11], // +9,
+      [0,7,8,9,10,11], // +15,
+      [0,1,2,3,4,5], // -15 (flattest)
+    ]
+  },
+// 7 note scales
    "Diatonic": {
     familyIndex: 1, // -6 / +6 = 12
     noteCount: 7,
@@ -971,7 +3460,1081 @@ const MODE_FAMILIES = {
       [0,1,2,3,4,10,11], // -5,
     ]
   },
-
+// 8 note scales
+  "Octatonic 1": {
+    familyIndex: 1, // -8 / +8 = 16
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,3,4,6,8,9,11], // +0,
+      [0,2,3,5,7,8,10,11], // +4,
+      [0,1,3,5,6,8,9,10], // +0,
+      [0,2,4,5,7,8,9,11], // +4,
+      [0,2,3,5,6,7,9,10], // +0,
+      [0,1,3,4,5,7,8,10], // -4,
+      [0,2,3,4,6,7,9,11], // +0,
+      [0,1,2,4,5,7,9,10], // -4 (flattest)
+    ]
+  },
+  "Octatonic 2": {
+    familyIndex: 2, // -8 / +8 = 16
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,3,5,6,7,9,11], // +0,
+      [0,2,4,5,6,8,10,11], // +4,
+      [0,2,3,4,6,8,9,10], // +0,
+      [0,1,2,4,6,7,8,10], // -4,
+      [0,1,3,5,6,7,9,11], // +0,
+      [0,2,4,5,6,8,10,11], // +4,
+      [0,2,3,4,6,8,9,10], // +0,
+      [0,1,2,4,6,7,8,10], // -4 (flattest)
+    ]
+  },
+  "Octatonic 3": {
+    familyIndex: 3, // -8 / +8 = 16
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,2,3,5,6,8,9,11], // +2,
+      [0,1,3,4,6,7,9,10], // -2,
+      [0,2,3,5,6,8,9,11], // +2,
+      [0,1,3,4,6,7,9,10], // -2,
+      [0,2,3,5,6,8,9,11], // +2,
+      [0,1,3,4,6,7,9,10], // -2,
+      [0,2,3,5,6,8,9,11], // +2,
+      [0,1,3,4,6,7,9,10], // -2 (flattest)
+    ]
+  },
+  "Octatonic 4": {
+    familyIndex: 4, // -9 / +9 = 18
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,3,4,6,7,9,11], // -1,
+      [0,2,3,5,6,8,10,11], // +3,
+      [0,1,3,4,6,8,9,10], // -1,
+      [0,2,3,5,7,8,9,11], // +3,
+      [0,1,3,5,6,7,9,10], // -1,
+      [0,2,4,5,6,8,9,11], // +3,
+      [0,2,3,4,6,7,9,10], // -1,
+      [0,1,2,4,5,7,8,10], // -5 (flattest)
+    ]
+  },
+  "Octatonic 5": {
+    familyIndex: 5, // -9 / +9 = 18
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,3,5,6,8,9,11], // +1,
+      [0,2,4,5,7,8,10,11], // +5,
+      [0,2,3,5,6,8,9,10], // +1,
+      [0,1,3,4,6,7,8,10], // -3,
+      [0,2,3,5,6,7,9,11], // +1,
+      [0,1,3,4,5,7,9,10], // -3,
+      [0,2,3,4,6,8,9,11], // +1,
+      [0,1,2,4,6,7,9,10], // -3 (flattest)
+    ]
+  },
+  "Octatonic 6": {
+    familyIndex: 6, // -12 / +12 = 24
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,4,5,7,8,11], // -4,
+      [0,1,3,4,6,7,10,11], // +0,
+      [0,2,3,5,6,9,10,11], // +4,
+      [0,1,3,4,7,8,9,10], // +0,
+      [0,2,3,6,7,8,9,11], // +4,
+      [0,1,4,5,6,7,9,10], // +0,
+      [0,3,4,5,6,8,9,11], // +4,
+      [0,1,2,3,5,6,8,9], // -8 (flattest)
+    ]
+  },
+  "Octatonic 7": {
+    familyIndex: 7, // -12 / +12 = 24
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,4,6,7,9,11], // -2,
+      [0,1,3,5,6,8,10,11], // +2,
+      [0,2,4,5,7,9,10,11], // +6,
+      [0,2,3,5,7,8,9,10], // +2,
+      [0,1,3,5,6,7,8,10], // -2,
+      [0,2,4,5,6,7,9,11], // +2,
+      [0,2,3,4,5,7,9,10], // -2,
+      [0,1,2,3,5,7,8,10], // -6 (flattest)
+    ]
+  },
+  "Octatonic 8": {
+    familyIndex: 8, // -12 / +12 = 24
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,5,6,8,9,11], // +0,
+      [0,1,4,5,7,8,10,11], // +4,
+      [0,3,4,6,7,9,10,11], // +8,
+      [0,1,3,4,6,7,8,9], // -4,
+      [0,2,3,5,6,7,8,11], // +0,
+      [0,1,3,4,5,6,9,10], // -4,
+      [0,2,3,4,5,8,9,11], // +0,
+      [0,1,2,3,6,7,9,10], // -4 (flattest)
+    ]
+  },
+  "Octatonic 9": {
+    familyIndex: 9, // -12 / +12 = 24
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,3,4,5,7,9,11], // -2,
+      [0,2,3,4,6,8,10,11], // +2,
+      [0,1,2,4,6,8,9,10], // -2,
+      [0,1,3,5,7,8,9,11], // +2,
+      [0,2,4,6,7,8,10,11], // +6,
+      [0,2,4,5,6,8,9,10], // +2,
+      [0,2,3,4,6,7,8,10], // -2,
+      [0,1,2,4,5,6,8,10], // -6 (flattest)
+    ]
+  },
+  "Octatonic 10": {
+    familyIndex: 10, // -12 / +12 = 24
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,3,4,6,7,8,11], // -2,
+      [0,2,3,5,6,7,10,11], // +2,
+      [0,1,3,4,5,8,9,10], // -2,
+      [0,2,3,4,7,8,9,11], // +2,
+      [0,1,2,5,6,7,9,10], // -2,
+      [0,1,4,5,6,8,9,11], // +2,
+      [0,3,4,5,7,8,10,11], // +6,
+      [0,1,2,4,5,7,8,9], // -6 (flattest)
+    ]
+  },
+  "Octatonic 11": {
+    familyIndex: 11, // -13 / +13 = 26
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,4,5,7,9,11], // -3,
+      [0,1,3,4,6,8,10,11], // +1,
+      [0,2,3,5,7,9,10,11], // +5,
+      [0,1,3,5,7,8,9,10], // +1,
+      [0,2,4,6,7,8,9,11], // +5,
+      [0,2,4,5,6,7,9,10], // +1,
+      [0,2,3,4,5,7,8,10], // -3,
+      [0,1,2,3,5,6,8,10], // -7 (flattest)
+    ]
+  },
+  "Octatonic 12": {
+    familyIndex: 12, // -13 / +13 = 26
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,4,6,7,8,11], // -3,
+      [0,1,3,5,6,7,10,11], // +1,
+      [0,2,4,5,6,9,10,11], // +5,
+      [0,2,3,4,7,8,9,10], // +1,
+      [0,1,2,5,6,7,8,10], // -3,
+      [0,1,4,5,6,7,9,11], // +1,
+      [0,3,4,5,6,8,10,11], // +5,
+      [0,1,2,3,5,7,8,9], // -7 (flattest)
+    ]
+  },
+  "Octatonic 13": {
+    familyIndex: 13, // -13 / +13 = 26
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,4,6,8,9,11], // -1,
+      [0,1,3,5,7,8,10,11], // +3,
+      [0,2,4,6,7,9,10,11], // +7,
+      [0,2,4,5,7,8,9,10], // +3,
+      [0,2,3,5,6,7,8,10], // -1,
+      [0,1,3,4,5,6,8,10], // -5,
+      [0,2,3,4,5,7,9,11], // -1,
+      [0,1,2,3,5,7,9,10], // -5 (flattest)
+    ]
+  },
+  "Octatonic 14": {
+    familyIndex: 14, // -13 / +13 = 26
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,5,6,7,9,11], // -1,
+      [0,1,4,5,6,8,10,11], // +3,
+      [0,3,4,5,7,9,10,11], // +7,
+      [0,1,2,4,6,7,8,9], // -5,
+      [0,1,3,5,6,7,8,11], // -1,
+      [0,2,4,5,6,7,10,11], // +3,
+      [0,2,3,4,5,8,9,10], // -1,
+      [0,1,2,3,6,7,8,10], // -5 (flattest)
+    ]
+  },
+  "Octatonic 15": {
+    familyIndex: 15, // -13 / +13 = 26
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,3,4,5,7,8,11], // -3,
+      [0,2,3,4,6,7,10,11], // +1,
+      [0,1,2,4,5,8,9,10], // -3,
+      [0,1,3,4,7,8,9,11], // +1,
+      [0,2,3,6,7,8,10,11], // +5,
+      [0,1,4,5,6,8,9,10], // +1,
+      [0,3,4,5,7,8,9,11], // +5,
+      [0,1,2,4,5,6,8,9], // -7 (flattest)
+    ]
+  },
+  "Octatonic 16": {
+    familyIndex: 16, // -13 / +13 = 26
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,3,4,5,8,9,11], // -1,
+      [0,2,3,4,7,8,10,11], // +3,
+      [0,1,2,5,6,8,9,10], // -1,
+      [0,1,4,5,7,8,9,11], // +3,
+      [0,3,4,6,7,8,10,11], // +7,
+      [0,1,3,4,5,7,8,9], // -5,
+      [0,2,3,4,6,7,8,11], // -1,
+      [0,1,2,4,5,6,9,10], // -5 (flattest)
+    ]
+  },
+  "Octatonic 17": {
+    familyIndex: 17, // -16 / +16 = 32
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,5,7,8,11], // -5,
+      [0,1,2,4,6,7,10,11], // -1,
+      [0,1,3,5,6,9,10,11], // +3,
+      [0,2,4,5,8,9,10,11], // +7,
+      [0,2,3,6,7,8,9,10], // +3,
+      [0,1,4,5,6,7,8,10], // -1,
+      [0,3,4,5,6,7,9,11], // +3,
+      [0,1,2,3,4,6,8,9], // -9 (flattest)
+    ]
+  },
+  "Octatonic 18": {
+    familyIndex: 18, // -16 / +16 = 32
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,5,7,9,11], // -4,
+      [0,1,2,4,6,8,10,11], // +0,
+      [0,1,3,5,7,9,10,11], // +4,
+      [0,2,4,6,8,9,10,11], // +8,
+      [0,2,4,6,7,8,9,10], // +4,
+      [0,2,4,5,6,7,8,10], // +0,
+      [0,2,3,4,5,6,8,10], // -4,
+      [0,1,2,3,4,6,8,10], // -8 (flattest)
+    ]
+  },
+  "Octatonic 19": {
+    familyIndex: 19, // -16 / +16 = 32
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,6,7,8,11], // -4,
+      [0,1,2,5,6,7,10,11], // +0,
+      [0,1,4,5,6,9,10,11], // +4,
+      [0,3,4,5,8,9,10,11], // +8,
+      [0,1,2,5,6,7,8,9], // -4,
+      [0,1,4,5,6,7,8,11], // +0,
+      [0,3,4,5,6,7,10,11], // +4,
+      [0,1,2,3,4,7,8,9], // -8 (flattest)
+    ]
+  },
+  "Octatonic 20": {
+    familyIndex: 20, // -16 / +16 = 32
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,6,7,9,11], // -3,
+      [0,1,2,5,6,8,10,11], // +1,
+      [0,1,4,5,7,9,10,11], // +5,
+      [0,3,4,6,8,9,10,11], // +9,
+      [0,1,3,5,6,7,8,9], // -3,
+      [0,2,4,5,6,7,8,11], // +1,
+      [0,2,3,4,5,6,9,10], // -3,
+      [0,1,2,3,4,7,8,10], // -7 (flattest)
+    ]
+  },
+  "Octatonic 21": {
+    familyIndex: 21, // -16 / +16 = 32
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,4,5,6,8,11], // -5,
+      [0,1,3,4,5,7,10,11], // -1,
+      [0,2,3,4,6,9,10,11], // +3,
+      [0,1,2,4,7,8,9,10], // -1,
+      [0,1,3,6,7,8,9,11], // +3,
+      [0,2,5,6,7,8,10,11], // +7,
+      [0,3,4,5,6,8,9,10], // +3,
+      [0,1,2,3,5,6,7,9], // -9 (flattest)
+    ]
+  },
+  "Octatonic 22": {
+    familyIndex: 22, // -16 / +16 = 32
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,4,5,6,9,11], // -4,
+      [0,1,3,4,5,8,10,11], // +0,
+      [0,2,3,4,7,9,10,11], // +4,
+      [0,1,2,5,7,8,9,10], // +0,
+      [0,1,4,6,7,8,9,11], // +4,
+      [0,3,5,6,7,8,10,11], // +8,
+      [0,2,3,4,5,7,8,9], // -4,
+      [0,1,2,3,5,6,7,10], // -8 (flattest)
+    ]
+  },
+  "Octatonic 23": {
+    familyIndex: 23, // -16 / +16 = 32
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,4,5,8,9,11], // -2,
+      [0,1,3,4,7,8,10,11], // +2,
+      [0,2,3,6,7,9,10,11], // +6,
+      [0,1,4,5,7,8,9,10], // +2,
+      [0,3,4,6,7,8,9,11], // +6,
+      [0,1,3,4,5,6,8,9], // -6,
+      [0,2,3,4,5,7,8,11], // -2,
+      [0,1,2,3,5,6,9,10], // -6 (flattest)
+    ]
+  },
+  "Octatonic 24": {
+    familyIndex: 24, // -16 / +16 = 32
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,3,4,5,6,8,11], // -4,
+      [0,2,3,4,5,7,10,11], // +0,
+      [0,1,2,3,5,8,9,10], // -4,
+      [0,1,2,4,7,8,9,11], // +0,
+      [0,1,3,6,7,8,10,11], // +4,
+      [0,2,5,6,7,9,10,11], // +8,
+      [0,3,4,5,7,8,9,10], // +4,
+      [0,1,2,4,5,6,7,9], // -8 (flattest)
+    ]
+  },
+  "Octatonic 25": {
+    familyIndex: 25, // -16 / +16 = 32
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,5,6,7,8,11], // -2,
+      [0,1,4,5,6,7,10,11], // +2,
+      [0,3,4,5,6,9,10,11], // +6,
+      [0,1,2,3,6,7,8,9], // -6,
+      [0,1,2,5,6,7,8,11], // -2,
+      [0,1,4,5,6,7,10,11], // +2,
+      [0,3,4,5,6,9,10,11], // +6,
+      [0,1,2,3,6,7,8,9], // -6 (flattest)
+    ]
+  },
+  "Octatonic 26": {
+    familyIndex: 26, // -16 / +16 = 32
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,3,4,5,6,9,11], // -3,
+      [0,2,3,4,5,8,10,11], // +1,
+      [0,1,2,3,6,8,9,10], // -3,
+      [0,1,2,5,7,8,9,11], // +1,
+      [0,1,4,6,7,8,10,11], // +5,
+      [0,3,5,6,7,9,10,11], // +9,
+      [0,2,3,4,6,7,8,9], // -3,
+      [0,1,2,4,5,6,7,10], // -7 (flattest)
+    ]
+  },
+  "Octatonic 27": {
+    familyIndex: 27, // -18 / +18 = 36
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,5,6,8,11], // -6,
+      [0,1,2,4,5,7,10,11], // -2,
+      [0,1,3,4,6,9,10,11], // +2,
+      [0,2,3,5,8,9,10,11], // +6,
+      [0,1,3,6,7,8,9,10], // +2,
+      [0,2,5,6,7,8,9,11], // +6,
+      [0,3,4,5,6,7,9,10], // +2,
+      [0,1,2,3,4,6,7,9], // -10 (flattest)
+    ]
+  },
+  "Octatonic 28": {
+    familyIndex: 28, // -18 / +18 = 36
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,6,8,9,11], // -2,
+      [0,1,2,5,7,8,10,11], // +2,
+      [0,1,4,6,7,9,10,11], // +6,
+      [0,3,5,6,8,9,10,11], // +10,
+      [0,2,3,5,6,7,8,9], // -2,
+      [0,1,3,4,5,6,7,10], // -6,
+      [0,2,3,4,5,6,9,11], // -2,
+      [0,1,2,3,4,7,9,10], // -6 (flattest)
+    ]
+  },
+  "Octatonic 29": {
+    familyIndex: 29, // -20 / +20 = 40
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,4,7,8,11], // -6,
+      [0,1,2,3,6,7,10,11], // -2,
+      [0,1,2,5,6,9,10,11], // +2,
+      [0,1,4,5,8,9,10,11], // +6,
+      [0,3,4,7,8,9,10,11], // +10,
+      [0,1,4,5,6,7,8,9], // -2,
+      [0,3,4,5,6,7,8,11], // +2,
+      [0,1,2,3,4,5,8,9], // -10 (flattest)
+    ]
+  },
+  "Octatonic 30": {
+    familyIndex: 30, // -20 / +20 = 40
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,5,6,9,11], // -5,
+      [0,1,2,4,5,8,10,11], // -1,
+      [0,1,3,4,7,9,10,11], // +3,
+      [0,2,3,6,8,9,10,11], // +7,
+      [0,1,4,6,7,8,9,10], // +3,
+      [0,3,5,6,7,8,9,11], // +7,
+      [0,2,3,4,5,6,8,9], // -5,
+      [0,1,2,3,4,6,7,10], // -9 (flattest)
+    ]
+  },
+  "Octatonic 31": {
+    familyIndex: 31, // -20 / +20 = 40
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,5,8,9,11], // -3,
+      [0,1,2,4,7,8,10,11], // +1,
+      [0,1,3,6,7,9,10,11], // +5,
+      [0,2,5,6,8,9,10,11], // +9,
+      [0,3,4,6,7,8,9,10], // +5,
+      [0,1,3,4,5,6,7,9], // -7,
+      [0,2,3,4,5,6,8,11], // -3,
+      [0,1,2,3,4,6,9,10], // -7 (flattest)
+    ]
+  },
+  "Octatonic 32": {
+    familyIndex: 32, // -20 / +20 = 40
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,4,5,6,7,11], // -6,
+      [0,1,3,4,5,6,10,11], // -2,
+      [0,2,3,4,5,9,10,11], // +2,
+      [0,1,2,3,7,8,9,10], // -2,
+      [0,1,2,6,7,8,9,11], // +2,
+      [0,1,5,6,7,8,10,11], // +6,
+      [0,4,5,6,7,9,10,11], // +10,
+      [0,1,2,3,5,6,7,8], // -10 (flattest)
+    ]
+  },
+  "Octatonic 33": {
+    familyIndex: 33, // -21 / +21 = 42
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,4,6,8,11], // -7,
+      [0,1,2,3,5,7,10,11], // -3,
+      [0,1,2,4,6,9,10,11], // +1,
+      [0,1,3,5,8,9,10,11], // +5,
+      [0,2,4,7,8,9,10,11], // +9,
+      [0,2,5,6,7,8,9,10], // +5,
+      [0,3,4,5,6,7,8,10], // +1,
+      [0,1,2,3,4,5,7,9], // -11 (flattest)
+    ]
+  },
+  "Octatonic 34": {
+    familyIndex: 34, // -21 / +21 = 42
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,4,7,9,11], // -5,
+      [0,1,2,3,6,8,10,11], // -1,
+      [0,1,2,5,7,9,10,11], // +3,
+      [0,1,4,6,8,9,10,11], // +7,
+      [0,3,5,7,8,9,10,11], // +11,
+      [0,2,4,5,6,7,8,9], // -1,
+      [0,2,3,4,5,6,7,10], // -5,
+      [0,1,2,3,4,5,8,10], // -9 (flattest)
+    ]
+  },
+  "Octatonic 35": {
+    familyIndex: 35, // -21 / +21 = 42
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,5,6,7,11], // -7,
+      [0,1,2,4,5,6,10,11], // -3,
+      [0,1,3,4,5,9,10,11], // +1,
+      [0,2,3,4,8,9,10,11], // +5,
+      [0,1,2,6,7,8,9,10], // +1,
+      [0,1,5,6,7,8,9,11], // +5,
+      [0,4,5,6,7,8,10,11], // +9,
+      [0,1,2,3,4,6,7,8], // -11 (flattest)
+    ]
+  },
+  "Octatonic 36": {
+    familyIndex: 36, // -21 / +21 = 42
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,3,4,5,6,7,11], // -5,
+      [0,2,3,4,5,6,10,11], // -1,
+      [0,1,2,3,4,8,9,10], // -5,
+      [0,1,2,3,7,8,9,11], // -1,
+      [0,1,2,6,7,8,10,11], // +3,
+      [0,1,5,6,7,9,10,11], // +7,
+      [0,4,5,6,8,9,10,11], // +11,
+      [0,1,2,4,5,6,7,8], // -9 (flattest)
+    ]
+  },
+  "Octatonic 37": {
+    familyIndex: 37, // -24 / +24 = 48
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,4,5,8,11], // -8,
+      [0,1,2,3,4,7,10,11], // -4,
+      [0,1,2,3,6,9,10,11], // +0,
+      [0,1,2,5,8,9,10,11], // +4,
+      [0,1,4,7,8,9,10,11], // +8,
+      [0,3,6,7,8,9,10,11], // +12,
+      [0,3,4,5,6,7,8,9], // +0,
+      [0,1,2,3,4,5,6,9], // -12 (flattest)
+    ]
+  },
+  "Octatonic 38": {
+    familyIndex: 38, // -24 / +24 = 48
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,4,6,7,11], // -8,
+      [0,1,2,3,5,6,10,11], // -4,
+      [0,1,2,4,5,9,10,11], // +0,
+      [0,1,3,4,8,9,10,11], // +4,
+      [0,2,3,7,8,9,10,11], // +8,
+      [0,1,5,6,7,8,9,10], // +4,
+      [0,4,5,6,7,8,9,11], // +8,
+      [0,1,2,3,4,5,7,8], // -12 (flattest)
+    ]
+  },
+  "Octatonic 39": {
+    familyIndex: 39, // -24 / +24 = 48
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,4,6,9,11], // -6,
+      [0,1,2,3,5,8,10,11], // -2,
+      [0,1,2,4,7,9,10,11], // +2,
+      [0,1,3,6,8,9,10,11], // +6,
+      [0,2,5,7,8,9,10,11], // +10,
+      [0,3,5,6,7,8,9,10], // +6,
+      [0,2,3,4,5,6,7,9], // -6,
+      [0,1,2,3,4,5,7,10], // -10 (flattest)
+    ]
+  },
+  "Octatonic 40": {
+    familyIndex: 40, // -24 / +24 = 48
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,4,8,9,11], // -4,
+      [0,1,2,3,7,8,10,11], // +0,
+      [0,1,2,6,7,9,10,11], // +4,
+      [0,1,5,6,8,9,10,11], // +8,
+      [0,4,5,7,8,9,10,11], // +12,
+      [0,1,3,4,5,6,7,8], // -8,
+      [0,2,3,4,5,6,7,11], // -4,
+      [0,1,2,3,4,5,9,10], // -8 (flattest)
+    ]
+  },
+  "Octatonic 41": {
+    familyIndex: 41, // -28 / +28 = 56
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,4,5,7,11], // -9,
+      [0,1,2,3,4,6,10,11], // -5,
+      [0,1,2,3,5,9,10,11], // -1,
+      [0,1,2,4,8,9,10,11], // +3,
+      [0,1,3,7,8,9,10,11], // +7,
+      [0,2,6,7,8,9,10,11], // +11,
+      [0,4,5,6,7,8,9,10], // +7,
+      [0,1,2,3,4,5,6,8], // -13 (flattest)
+    ]
+  },
+  "Octatonic 42": {
+    familyIndex: 42, // -28 / +28 = 56
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,4,5,9,11], // -7,
+      [0,1,2,3,4,8,10,11], // -3,
+      [0,1,2,3,7,9,10,11], // +1,
+      [0,1,2,6,8,9,10,11], // +5,
+      [0,1,5,7,8,9,10,11], // +9,
+      [0,4,6,7,8,9,10,11], // +13,
+      [0,2,3,4,5,6,7,8], // -7,
+      [0,1,2,3,4,5,6,10], // -11 (flattest)
+    ]
+  },
+  "Octatonic 43": {
+    familyIndex: 43, // -32 / +32 = 64
+    noteCount: 8,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    sets: [
+      [0,1,2,3,4,5,6,11], // -10,
+      [0,1,2,3,4,5,10,11], // -6,
+      [0,1,2,3,4,9,10,11], // -2,
+      [0,1,2,3,8,9,10,11], // +2,
+      [0,1,2,7,8,9,10,11], // +6,
+      [0,1,6,7,8,9,10,11], // +10,
+      [0,5,6,7,8,9,10,11], // +14,
+      [0,1,2,3,4,5,6,7], // -14 (flattest)
+    ]
+  },
+// 9 note scales
+  "Nonatonic 1": {
+    familyIndex: 1, // -9 / +9 = 18
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,3,4,5,7,8,9,11], // +0,
+      [0,2,3,4,6,7,8,10,11], // +3,
+      [0,1,2,4,5,6,8,9,10], // -3,
+      [0,1,3,4,5,7,8,9,11], // +0,
+      [0,2,3,4,6,7,8,10,11], // +3,
+      [0,1,2,4,5,6,8,9,10], // -3,
+      [0,1,3,4,5,7,8,9,11], // +0,
+      [0,2,3,4,6,7,8,10,11], // +3,
+      [0,1,2,4,5,6,8,9,10], // -3 (flattest)
+    ]
+  },
+  "Nonatonic 2": {
+    familyIndex: 2, // -11 / +11 = 22
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,4,5,6,8,9,11], // -2,
+      [0,1,3,4,5,7,8,10,11], // +1,
+      [0,2,3,4,6,7,9,10,11], // +4,
+      [0,1,2,4,5,7,8,9,10], // -2,
+      [0,1,3,4,6,7,8,9,11], // +1,
+      [0,2,3,5,6,7,8,10,11], // +4,
+      [0,1,3,4,5,6,8,9,10], // -2,
+      [0,2,3,4,5,7,8,9,11], // +1,
+      [0,1,2,3,5,6,7,9,10], // -5 (flattest)
+    ]
+  },
+  "Nonatonic 3": {
+    familyIndex: 3, // -11 / +11 = 22
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,4,5,7,8,9,11], // -1,
+      [0,1,3,4,6,7,8,10,11], // +2,
+      [0,2,3,5,6,7,9,10,11], // +5,
+      [0,1,3,4,5,7,8,9,10], // -1,
+      [0,2,3,4,6,7,8,9,11], // +2,
+      [0,1,2,4,5,6,7,9,10], // -4,
+      [0,1,3,4,5,6,8,9,11], // -1,
+      [0,2,3,4,5,7,8,10,11], // +2,
+      [0,1,2,3,5,6,8,9,10], // -4 (flattest)
+    ]
+  },
+  "Nonatonic 4": {
+    familyIndex: 4, // -12 / +12 = 24
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,3,5,6,8,9,11], // -3,
+      [0,1,2,4,5,7,8,10,11], // +0,
+      [0,1,3,4,6,7,9,10,11], // +3,
+      [0,2,3,5,6,8,9,10,11], // +6,
+      [0,1,3,4,6,7,8,9,10], // +0,
+      [0,2,3,5,6,7,8,9,11], // +3,
+      [0,1,3,4,5,6,7,9,10], // -3,
+      [0,2,3,4,5,6,8,9,11], // +0,
+      [0,1,2,3,4,6,7,9,10], // -6 (flattest)
+    ]
+  },
+  "Nonatonic 5": {
+    familyIndex: 5, // -12 / +12 = 24
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,4,5,6,7,9,11], // -3,
+      [0,1,3,4,5,6,8,10,11], // +0,
+      [0,2,3,4,5,7,9,10,11], // +3,
+      [0,1,2,3,5,7,8,9,10], // -3,
+      [0,1,2,4,6,7,8,9,11], // +0,
+      [0,1,3,5,6,7,8,10,11], // +3,
+      [0,2,4,5,6,7,9,10,11], // +6,
+      [0,2,3,4,5,7,8,9,10], // +0,
+      [0,1,2,3,5,6,7,8,10], // -6 (flattest)
+    ]
+  },
+  "Nonatonic 6": {
+    familyIndex: 6, // -14 / +14 = 28
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,3,5,6,7,9,11], // -4,
+      [0,1,2,4,5,6,8,10,11], // -1,
+      [0,1,3,4,5,7,9,10,11], // +2,
+      [0,2,3,4,6,8,9,10,11], // +5,
+      [0,1,2,4,6,7,8,9,10], // -1,
+      [0,1,3,5,6,7,8,9,11], // +2,
+      [0,2,4,5,6,7,8,10,11], // +5,
+      [0,2,3,4,5,6,8,9,10], // -1,
+      [0,1,2,3,4,6,7,8,10], // -7 (flattest)
+    ]
+  },
+  "Nonatonic 7": {
+    familyIndex: 7, // -14 / +14 = 28
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,3,5,7,8,9,11], // -2,
+      [0,1,2,4,6,7,8,10,11], // +1,
+      [0,1,3,5,6,7,9,10,11], // +4,
+      [0,2,4,5,6,8,9,10,11], // +7,
+      [0,2,3,4,6,7,8,9,10], // +1,
+      [0,1,2,4,5,6,7,8,10], // -5,
+      [0,1,3,4,5,6,7,9,11], // -2,
+      [0,2,3,4,5,6,8,10,11], // +1,
+      [0,1,2,3,4,6,8,9,10], // -5 (flattest)
+    ]
+  },
+  "Nonatonic 8": {
+    familyIndex: 8, // -17 / +17 = 34
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,3,4,6,7,9,11], // -5,
+      [0,1,2,3,5,6,8,10,11], // -2,
+      [0,1,2,4,5,7,9,10,11], // +1,
+      [0,1,3,4,6,8,9,10,11], // +4,
+      [0,2,3,5,7,8,9,10,11], // +7,
+      [0,1,3,5,6,7,8,9,10], // +1,
+      [0,2,4,5,6,7,8,9,11], // +4,
+      [0,2,3,4,5,6,7,9,10], // -2,
+      [0,1,2,3,4,5,7,8,10], // -8 (flattest)
+    ]
+  },
+  "Nonatonic 9": {
+    familyIndex: 9, // -17 / +17 = 34
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,3,4,6,8,9,11], // -4,
+      [0,1,2,3,5,7,8,10,11], // -1,
+      [0,1,2,4,6,7,9,10,11], // +2,
+      [0,1,3,5,6,8,9,10,11], // +5,
+      [0,2,4,5,7,8,9,10,11], // +8,
+      [0,2,3,5,6,7,8,9,10], // +2,
+      [0,1,3,4,5,6,7,8,10], // -4,
+      [0,2,3,4,5,6,7,9,11], // -1,
+      [0,1,2,3,4,5,7,9,10], // -7 (flattest)
+    ]
+  },
+  "Nonatonic 10": {
+    familyIndex: 10, // -17 / +17 = 34
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,3,5,6,7,8,11], // -5,
+      [0,1,2,4,5,6,7,10,11], // -2,
+      [0,1,3,4,5,6,9,10,11], // +1,
+      [0,2,3,4,5,8,9,10,11], // +4,
+      [0,1,2,3,6,7,8,9,10], // -2,
+      [0,1,2,5,6,7,8,9,11], // +1,
+      [0,1,4,5,6,7,8,10,11], // +4,
+      [0,3,4,5,6,7,9,10,11], // +7,
+      [0,1,2,3,4,6,7,8,9], // -8 (flattest)
+    ]
+  },
+  "Nonatonic 11": {
+    familyIndex: 11, // -17 / +17 = 34
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,4,5,6,7,8,11], // -4,
+      [0,1,3,4,5,6,7,10,11], // -1,
+      [0,2,3,4,5,6,9,10,11], // +2,
+      [0,1,2,3,4,7,8,9,10], // -4,
+      [0,1,2,3,6,7,8,9,11], // -1,
+      [0,1,2,5,6,7,8,10,11], // +2,
+      [0,1,4,5,6,7,9,10,11], // +5,
+      [0,3,4,5,6,8,9,10,11], // +8,
+      [0,1,2,3,5,6,7,8,9], // -7 (flattest)
+    ]
+  },
+  "Nonatonic 12": {
+    familyIndex: 12, // -18 / +18 = 36
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,3,4,6,7,8,11], // -6,
+      [0,1,2,3,5,6,7,10,11], // -3,
+      [0,1,2,4,5,6,9,10,11], // +0,
+      [0,1,3,4,5,8,9,10,11], // +3,
+      [0,2,3,4,7,8,9,10,11], // +6,
+      [0,1,2,5,6,7,8,9,10], // +0,
+      [0,1,4,5,6,7,8,9,11], // +3,
+      [0,3,4,5,6,7,8,10,11], // +6,
+      [0,1,2,3,4,5,7,8,9], // -9 (flattest)
+    ]
+  },
+  "Nonatonic 13": {
+    familyIndex: 13, // -18 / +18 = 36
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,3,4,7,8,9,11], // -3,
+      [0,1,2,3,6,7,8,10,11], // +0,
+      [0,1,2,5,6,7,9,10,11], // +3,
+      [0,1,4,5,6,8,9,10,11], // +6,
+      [0,3,4,5,7,8,9,10,11], // +9,
+      [0,1,2,4,5,6,7,8,9], // -6,
+      [0,1,3,4,5,6,7,8,11], // -3,
+      [0,2,3,4,5,6,7,10,11], // +0,
+      [0,1,2,3,4,5,8,9,10], // -6 (flattest)
+    ]
+  },
+  "Nonatonic 14": {
+    familyIndex: 14, // -21 / +21 = 42
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,3,4,5,7,9,11], // -6,
+      [0,1,2,3,4,6,8,10,11], // -3,
+      [0,1,2,3,5,7,9,10,11], // +0,
+      [0,1,2,4,6,8,9,10,11], // +3,
+      [0,1,3,5,7,8,9,10,11], // +6,
+      [0,2,4,6,7,8,9,10,11], // +9,
+      [0,2,4,5,6,7,8,9,10], // +3,
+      [0,2,3,4,5,6,7,8,10], // -3,
+      [0,1,2,3,4,5,6,8,10], // -9 (flattest)
+    ]
+  },
+  "Nonatonic 15": {
+    familyIndex: 15, // -22 / +22 = 44
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,3,4,5,7,8,11], // -7,
+      [0,1,2,3,4,6,7,10,11], // -4,
+      [0,1,2,3,5,6,9,10,11], // -1,
+      [0,1,2,4,5,8,9,10,11], // +2,
+      [0,1,3,4,7,8,9,10,11], // +5,
+      [0,2,3,6,7,8,9,10,11], // +8,
+      [0,1,4,5,6,7,8,9,10], // +2,
+      [0,3,4,5,6,7,8,9,11], // +5,
+      [0,1,2,3,4,5,6,8,9], // -10 (flattest)
+    ]
+  },
+  "Nonatonic 16": {
+    familyIndex: 16, // -22 / +22 = 44
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,3,4,5,8,9,11], // -5,
+      [0,1,2,3,4,7,8,10,11], // -2,
+      [0,1,2,3,6,7,9,10,11], // +1,
+      [0,1,2,5,6,8,9,10,11], // +4,
+      [0,1,4,5,7,8,9,10,11], // +7,
+      [0,3,4,6,7,8,9,10,11], // +10,
+      [0,1,3,4,5,6,7,8,9], // -5,
+      [0,2,3,4,5,6,7,8,11], // -2,
+      [0,1,2,3,4,5,6,9,10], // -8 (flattest)
+    ]
+  },
+  "Nonatonic 17": {
+    familyIndex: 17, // -26 / +26 = 52
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,3,4,5,6,8,11], // -8,
+      [0,1,2,3,4,5,7,10,11], // -5,
+      [0,1,2,3,4,6,9,10,11], // -2,
+      [0,1,2,3,5,8,9,10,11], // +1,
+      [0,1,2,4,7,8,9,10,11], // +4,
+      [0,1,3,6,7,8,9,10,11], // +7,
+      [0,2,5,6,7,8,9,10,11], // +10,
+      [0,3,4,5,6,7,8,9,10], // +4,
+      [0,1,2,3,4,5,6,7,9], // -11 (flattest)
+    ]
+  },
+  "Nonatonic 18": {
+    familyIndex: 18, // -26 / +26 = 52
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,3,4,5,6,9,11], // -7,
+      [0,1,2,3,4,5,8,10,11], // -4,
+      [0,1,2,3,4,7,9,10,11], // -1,
+      [0,1,2,3,6,8,9,10,11], // +2,
+      [0,1,2,5,7,8,9,10,11], // +5,
+      [0,1,4,6,7,8,9,10,11], // +8,
+      [0,3,5,6,7,8,9,10,11], // +11,
+      [0,2,3,4,5,6,7,8,9], // -4,
+      [0,1,2,3,4,5,6,7,10], // -10 (flattest)
+    ]
+  },
+  "Nonatonic 19": {
+    familyIndex: 19, // -30 / +30 = 60
+    noteCount: 9,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    sets: [
+      [0,1,2,3,4,5,6,7,11], // -9,
+      [0,1,2,3,4,5,6,10,11], // -6,
+      [0,1,2,3,4,5,9,10,11], // -3,
+      [0,1,2,3,4,8,9,10,11], // +0,
+      [0,1,2,3,7,8,9,10,11], // +3,
+      [0,1,2,6,7,8,9,10,11], // +6,
+      [0,1,5,6,7,8,9,10,11], // +9,
+      [0,4,5,6,7,8,9,10,11], // +12,
+      [0,1,2,3,4,5,6,7,8], // -12 (flattest)
+    ]
+  },
+// 10 note scales
+  "Decatonic 1": {
+    familyIndex: 1, // -12 / +12 = 24
+    noteCount: 10,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9", "Mode 10"],
+    sets: [
+      [0,1,2,3,5,6,7,8,9,11], // -2,
+      [0,1,2,4,5,6,7,8,10,11], // +0,
+      [0,1,3,4,5,6,7,9,10,11], // +2,
+      [0,2,3,4,5,6,8,9,10,11], // +4,
+      [0,1,2,3,4,6,7,8,9,10], // -4,
+      [0,1,2,3,5,6,7,8,9,11], // -2,
+      [0,1,2,4,5,6,7,8,10,11], // +0,
+      [0,1,3,4,5,6,7,9,10,11], // +2,
+      [0,2,3,4,5,6,8,9,10,11], // +4,
+      [0,1,2,3,4,6,7,8,9,10], // -4 (flattest)
+    ]
+  },
+  "Decatonic 2": {
+    familyIndex: 2, // -13 / +13 = 26
+    noteCount: 10,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9", "Mode 10"],
+    sets: [
+      [0,1,2,3,4,6,7,8,9,11], // -3,
+      [0,1,2,3,5,6,7,8,10,11], // -1,
+      [0,1,2,4,5,6,7,9,10,11], // +1,
+      [0,1,3,4,5,6,8,9,10,11], // +3,
+      [0,2,3,4,5,7,8,9,10,11], // +5,
+      [0,1,2,3,5,6,7,8,9,10], // -3,
+      [0,1,2,4,5,6,7,8,9,11], // -1,
+      [0,1,3,4,5,6,7,8,10,11], // +1,
+      [0,2,3,4,5,6,7,9,10,11], // +3,
+      [0,1,2,3,4,5,7,8,9,10], // -5 (flattest)
+    ]
+  },
+  "Decatonic 3": {
+    familyIndex: 3, // -14 / +14 = 28
+    noteCount: 10,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9", "Mode 10"],
+    sets: [
+      [0,1,2,3,4,5,7,8,9,11], // -4,
+      [0,1,2,3,4,6,7,8,10,11], // -2,
+      [0,1,2,3,5,6,7,9,10,11], // +0,
+      [0,1,2,4,5,6,8,9,10,11], // +2,
+      [0,1,3,4,5,7,8,9,10,11], // +4,
+      [0,2,3,4,6,7,8,9,10,11], // +6,
+      [0,1,2,4,5,6,7,8,9,10], // -2,
+      [0,1,3,4,5,6,7,8,9,11], // +0,
+      [0,2,3,4,5,6,7,8,10,11], // +2,
+      [0,1,2,3,4,5,6,8,9,10], // -6 (flattest)
+    ]
+  },
+  "Decatonic 4": {
+    familyIndex: 4, // -17 / +17 = 34
+    noteCount: 10,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9", "Mode 10"],
+    sets: [
+      [0,1,2,3,4,5,6,8,9,11], // -5,
+      [0,1,2,3,4,5,7,8,10,11], // -3,
+      [0,1,2,3,4,6,7,9,10,11], // -1,
+      [0,1,2,3,5,6,8,9,10,11], // +1,
+      [0,1,2,4,5,7,8,9,10,11], // +3,
+      [0,1,3,4,6,7,8,9,10,11], // +5,
+      [0,2,3,5,6,7,8,9,10,11], // +7,
+      [0,1,3,4,5,6,7,8,9,10], // -1,
+      [0,2,3,4,5,6,7,8,9,11], // +1,
+      [0,1,2,3,4,5,6,7,9,10], // -7 (flattest)
+    ]
+  },
+  "Decatonic 5": {
+    familyIndex: 5, // -20 / +20 = 40
+    noteCount: 10,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9", "Mode 10"],
+    sets: [
+      [0,1,2,3,4,5,6,7,9,11], // -6,
+      [0,1,2,3,4,5,6,8,10,11], // -4,
+      [0,1,2,3,4,5,7,9,10,11], // -2,
+      [0,1,2,3,4,6,8,9,10,11], // +0,
+      [0,1,2,3,5,7,8,9,10,11], // +2,
+      [0,1,2,4,6,7,8,9,10,11], // +4,
+      [0,1,3,5,6,7,8,9,10,11], // +6,
+      [0,2,4,5,6,7,8,9,10,11], // +8,
+      [0,2,3,4,5,6,7,8,9,10], // +0,
+      [0,1,2,3,4,5,6,7,8,10], // -8 (flattest)
+    ]
+  },
+  "Decatonic 6": {
+    familyIndex: 6, // -25 / +25 = 50
+    noteCount: 10,
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9", "Mode 10"],
+    sets: [
+      [0,1,2,3,4,5,6,7,8,11], // -7,
+      [0,1,2,3,4,5,6,7,10,11], // -5,
+      [0,1,2,3,4,5,6,9,10,11], // -3,
+      [0,1,2,3,4,5,8,9,10,11], // -1,
+      [0,1,2,3,4,7,8,9,10,11], // +1,
+      [0,1,2,3,6,7,8,9,10,11], // +3,
+      [0,1,2,5,6,7,8,9,10,11], // +5,
+      [0,1,4,5,6,7,8,9,10,11], // +7,
+      [0,3,4,5,6,7,8,9,10,11], // +9,
+      [0,1,2,3,4,5,6,7,8,9], // -9 (flattest)
+    ]
+  },
+// 11 note scales
+  "Undecatonic": {
+    familyIndex: 1, // -15 / +15 = 30
+    noteCount: 11,
+    names: ["Mode 1","Mode 2","Mode 3","Mode 4","Mode 5",
+            "Mode 6","Undecachromatic","Mode 8","Mode 9","Mode 10","Mode 11"],
+    sets: [
+      [0,1,2,3,4,5,7,8,9,10,11],   // +0
+      [0,1,2,3,4,6,7,8,9,10,11],   // +1
+      [0,1,2,3,5,6,7,8,9,10,11],   // +2
+      [0,1,2,4,5,6,7,8,9,10,11],   // +3
+      [0,1,3,4,5,6,7,8,9,10,11],   // +4
+      [0,2,3,4,5,6,7,8,9,10,11],   // +5
+      [0,1,2,3,4,5,6,7,8,9,10],    // -5 (flattest)
+      [0,1,2,3,4,5,6,7,8,9,11],    // -4
+      [0,1,2,3,4,5,6,7,8,10,11],   // -3
+      [0,1,2,3,4,5,6,7,9,10,11],   // -2
+      [0,1,2,3,4,5,6,8,9,10,11],   // -1
+    ]
+  },
+// 12 note scales
   "Chromatic": {
     familyIndex: 1,
     noteCount: 12,
@@ -1009,81 +4572,6 @@ const MODE_FAMILIES = {
     sets: [
       [0,1,3,4,6,7,9,10],
       [0,2,3,5,6,8,9,11]
-    ]
-  },
-  "Whole tone": {
-    familyIndex: 1,
-    noteCount: 6,
-    names: ["Whole Tone"],
-    sets: [
-      [0,2,4,6,8,10],
-    ]
-  },
-  "Augmented": {
-    familyIndex: 2,
-    noteCount: 6,
-    names: ["Augmented 1", "Augmented 2"],
-    sets: [
-      [0,1,4,5,8,9],
-      [0,3,4,7,8,11]
-    ]
-  },
-  Pentatonic: {
-    familyIndex: 1,
-    noteCount: 5,
-    names: ["Major Pentatonic","Suspended Pentatonic","Blues Minor","Blues Major","Minor Pentatonic"],
-    sets: [
-      [0,2,4,7,9],
-      [0,2,5,7,10],
-      [0,3,5,8,10],
-      [0,2,5,7,9],
-      [0,3,5,7,10]
-    ]
-  },
-  "Fully Diminished": {
-    familyIndex: 1,
-    noteCount: 4,
-    names: ["Fully Diminished"],
-    sets: [
-      [0,3,6,9],
-    ]
-  },
-  "Augmented Triad": {
-    familyIndex: 1,
-    noteCount: 3,
-    names: ["Augmented Triad"],
-    sets: [
-      [0,4,8],
-    ]
-  },
-  "Major Triad": {
-    familyIndex: 2,
-    noteCount: 3,
-    names: ["Major Triad","First Inversion", "Second Inversion"],
-    sets: [
-      [0,4,7],
-      [0,3,8],
-      [0,5,9]
-    ]
-  },
-  "Minor Triad": {
-    familyIndex: 3,
-    noteCount: 3,
-    names: ["Minor Triad","First Inversion", "Second Inversion"],
-    sets: [
-      [0,3,7],
-      [0,4,9],
-      [0,5,8]
-    ]
-  },
-  "Diminished Triad": {
-    familyIndex: 4,
-    noteCount: 3,
-    names: ["Diminished Triad","First Inversion", "Second Inversion"],
-    sets: [
-      [0,3,6],
-      [0,6,9],
-      [0,3,9]
     ]
   },
   "P5 & P4": {
