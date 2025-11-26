@@ -7,6 +7,78 @@ const INTERVALS = ["Root","m2","M2","m3","M3","P4","Tritone","P5","m6","M6","m7"
 
 // Mode families with noteCount + familyIndex metadata
 const MODE_FAMILIES = {
+"Void": {
+  familyIndex: 1,
+  noteCount: 0,
+  names: ["Silence"], // or []
+  sets: [
+    [] // a single “rotation” of the empty set
+  ]
+},
+// 1 note scale
+  "Unison/Octave": {
+    familyIndex: 1,
+    noteCount: 1,
+    names: ["Unison/Octave"],
+    sets: [
+      [0],
+    ]
+  },
+// 2 note scales
+  "Tritone": {
+    familyIndex: 1,
+    noteCount: 2,
+    names: ["Augmented Fourth", "Diminished Fifth"],
+    sets: [
+    [0,6], // Aug 4
+    [0,6], // Dim 5 (same pattern, distinct entry)
+    ]
+  },
+  "P5 & P4": {
+    familyIndex: 2,
+    noteCount: 2,
+    names: ["Perfect Fifth", "Perfect Fourth"],
+    sets: [
+      [0,7],
+      [0,5],
+    ]
+  },
+  "M3 & m6": {
+    familyIndex: 3,
+    noteCount: 2,
+    names: ["Major Third", "Minor Sixth"],
+    sets: [
+      [0,4],
+      [0,8],
+    ]
+  },
+  "M6 & m3": {
+    familyIndex: 4,
+    noteCount: 2,
+    names: ["Major Sixth", "Minor Third"],
+    sets: [
+      [0,9],
+      [0,3],
+    ]
+  },
+  "M2 & m7": {
+    familyIndex: 5,
+    noteCount: 2,
+    names: ["Major Second", "Minor Seventh"],
+    sets: [
+      [0,2],
+      [0,10],
+    ]
+  },
+  "M7 & m2": {
+    familyIndex: 6,
+    noteCount: 2,
+    names: ["Major Seventh", "Minor Second"],
+    sets: [
+      [0,11],
+      [0,1],
+    ]
+  },
   "Augmented Triad": {
     familyIndex: 1,
     noteCount: 3,
@@ -15,50 +87,50 @@ const MODE_FAMILIES = {
       [0,4,8],
     ]
   },
-  "Tritonic 2": {
+  "Major Triad": {
     familyIndex: 2, // -2 / +2 = 4
     noteCount: 3,
-    names: ["Mode 1", "Mode 2", "Mode 3"],
+    names: ["Major Triad", "First Inversion", "Second Inversion"],
     sets: [
-      [0,4,9], // +1,
-      [0,5,8], // +1,
-      [0,3,7], // -2 (flattest)
-    ]
-  },
-  "Tritonic 3": {
-    familyIndex: 3, // -2 / +2 = 4
-    noteCount: 3,
-    names: ["Mode 1", "Mode 2", "Mode 3"],
-    sets: [
-      [0,5,9], // +2,
       [0,4,7], // -1,
       [0,3,8], // -1 (flattest)
+      [0,5,9], // +2,
     ]
   },
-  "Tritonic 4": {
-    familyIndex: 4, // -3 / +3 = 6
+  "Minor Triad": {
+    familyIndex: 3, // -2 / +2 = 4
     noteCount: 3,
-    names: ["Mode 1", "Mode 2", "Mode 3"],
+    names: ["Minor Triad", "First Inversion", "Second Inversion"],
     sets: [
-      [0,5,10], // +3,
-      [0,5,7], // +0,
-      [0,2,7], // -3 (flattest)
+      [0,3,7], // -2 (flattest)
+      [0,4,9], // +1,
+      [0,5,8], // +1,
     ]
   },
-  "Tritonic 5": {
+  "Diminished Triad": {
     familyIndex: 5, // -3 / +3 = 6
     noteCount: 3,
-    names: ["Mode 1", "Mode 2", "Mode 3"],
+    names: ["Diminished Triad", "First Inversion", "Second Inversion"],
     sets: [
+      [0,3,6], // -3 (flattest)
       [0,3,9], // +0,
       [0,6,9], // +3,
-      [0,3,6], // -3 (flattest)
     ]
   },
-  "Tritonic 6": {
+  "Suspended Triad": {
+    familyIndex: 4, // -3 / +3 = 6
+    noteCount: 3,
+    names: ["Sus4", "Sus2", "Sus7"],
+    sets: [
+      [0,5,7], // +0,
+      [0,2,7], // -3 (flattest)
+      [0,5,10], // +3,
+    ]
+  },
+  "Dominant 7th no 5th": {
     familyIndex: 6, // -4 / +4 = 8
     noteCount: 3,
-    names: ["Mode 1", "Mode 2", "Mode 3"],
+    names: ["Dom7 no 5", "Mode 2", "Mode 3"],
     sets: [
       [0,4,10], // +2,
       [0,6,8], // +2,
@@ -185,7 +257,7 @@ const MODE_FAMILIES = {
       [0,2,3], // -7 (flattest)
     ]
   },
-  "Tritonic 19": {
+  "Trichromatic": {
     familyIndex: 19, // -9 / +9 = 18
     noteCount: 3,
     names: ["Mode 1", "Mode 2", "Mode 3"],
@@ -204,10 +276,10 @@ const MODE_FAMILIES = {
       [0,3,6,9],
     ]
   },
-  "Tetratonic 2": {
+  "Half Diminshed": {
     familyIndex: 2, // -3 / +3 = 6
     noteCount: 4,
-    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    names: ["Half Diminished", "First Inversion", "Second Inversion", "Third Inversion"],
     sets: [
       [0,3,6,10], // +1,
       [0,3,7,9], // +1,
@@ -215,10 +287,10 @@ const MODE_FAMILIES = {
       [0,2,5,8], // -3 (flattest)
     ]
   },
-  "Tetratonic 3": {
+  "Dominant 7th": {
     familyIndex: 3, // -3 / +3 = 6
     noteCount: 4,
-    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
+    names: ["Dominant 7th", "First Inversion", "Second Inversion", "Third Inversion"],
     sets: [
       [0,4,7,10], // +3,
       [0,3,6,8], // -1,
@@ -226,7 +298,7 @@ const MODE_FAMILIES = {
       [0,2,6,9], // -1 (flattest)
     ]
   },
-  "Tetratonic 4": {
+  "Major 7th": {
     familyIndex: 4, // -4 / +4 = 8
     noteCount: 4,
     names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
@@ -259,7 +331,7 @@ const MODE_FAMILIES = {
       [0,2,5,7], // -4 (flattest)
     ]
   },
-  "Tetratonic 7": {
+  "Minor 7th": {
     familyIndex: 7, // -4 / +4 = 8
     noteCount: 4,
     names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4"],
@@ -3461,10 +3533,25 @@ const MODE_FAMILIES = {
     ]
   },
 // 8 note scales
-  "Octatonic 1": {
+  "Octatonic": {
     familyIndex: 1, // -8 / +8 = 16
     noteCount: 8,
-    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    names: ["Whole Half", "Half Whole", "Whole Half", "Half Whole", "Whole Half", "Half Whole", "Whole Half", "Half Whole"],
+    sets: [
+      [0,2,3,5,6,8,9,11], // +2,
+      [0,1,3,4,6,7,9,10], // -2,
+      [0,2,3,5,6,8,9,11], // +2,
+      [0,1,3,4,6,7,9,10], // -2,
+      [0,2,3,5,6,8,9,11], // +2,
+      [0,1,3,4,6,7,9,10], // -2,
+      [0,2,3,5,6,8,9,11], // +2,
+      [0,1,3,4,6,7,9,10], // -2 (flattest)
+    ]
+  },
+  "Bebop Major": {
+    familyIndex: 2, // -8 / +8 = 16
+    noteCount: 8,
+    names: ["Mode 1", "Bebop Natural Minor", "Mode 3", "Bebop Major", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
     sets: [
       [0,1,3,4,6,8,9,11], // +0,
       [0,2,3,5,7,8,10,11], // +4,
@@ -3476,8 +3563,8 @@ const MODE_FAMILIES = {
       [0,1,2,4,5,7,9,10], // -4 (flattest)
     ]
   },
-  "Octatonic 2": {
-    familyIndex: 2, // -8 / +8 = 16
+  "Octatonic 3": {
+    familyIndex: 3, // -8 / +8 = 16
     noteCount: 8,
     names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
     sets: [
@@ -3491,25 +3578,10 @@ const MODE_FAMILIES = {
       [0,1,2,4,6,7,8,10], // -4 (flattest)
     ]
   },
-  "Octatonic 3": {
-    familyIndex: 3, // -8 / +8 = 16
-    noteCount: 8,
-    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
-    sets: [
-      [0,2,3,5,6,8,9,11], // +2,
-      [0,1,3,4,6,7,9,10], // -2,
-      [0,2,3,5,6,8,9,11], // +2,
-      [0,1,3,4,6,7,9,10], // -2,
-      [0,2,3,5,6,8,9,11], // +2,
-      [0,1,3,4,6,7,9,10], // -2,
-      [0,2,3,5,6,8,9,11], // +2,
-      [0,1,3,4,6,7,9,10], // -2 (flattest)
-    ]
-  },
-  "Octatonic 4": {
+  "Bebop Melodic Minor": {
     familyIndex: 4, // -9 / +9 = 18
     noteCount: 8,
-    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    names: ["Mode 1", "Mode 2", "Mode 3", "Bebop Melodic Minor", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
     sets: [
       [0,1,3,4,6,7,9,11], // -1,
       [0,2,3,5,6,8,10,11], // +3,
@@ -3536,10 +3608,10 @@ const MODE_FAMILIES = {
       [0,1,2,4,6,7,9,10], // -3 (flattest)
     ]
   },
-  "Octatonic 6": {
+  "Bebop Dominant": {
     familyIndex: 6, // -12 / +12 = 24
     noteCount: 8,
-    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    names: ["Mode 1", "Mode 2", "Bebop Dominant", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
     sets: [
       [0,1,2,4,5,7,8,11], // -4,
       [0,1,3,4,6,7,10,11], // +0,
@@ -3551,10 +3623,10 @@ const MODE_FAMILIES = {
       [0,1,2,3,5,6,8,9], // -8 (flattest)
     ]
   },
-  "Octatonic 7": {
+  "Bebop Dorian (b4)": {
     familyIndex: 7, // -12 / +12 = 24
     noteCount: 8,
-    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Bebop Dorian (b4)", "Mode 8"],
     sets: [
       [0,1,2,4,6,7,9,11], // -2,
       [0,1,3,5,6,8,10,11], // +2,
@@ -3611,10 +3683,10 @@ const MODE_FAMILIES = {
       [0,1,2,4,5,7,8,9], // -6 (flattest)
     ]
   },
-  "Octatonic 11": {
+  "Bebop Dorian (♮7)": {
     familyIndex: 11, // -13 / +13 = 26
     noteCount: 8,
-    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
+    names: ["Mode 1", "Mode 2", "Bebop Dorian (♮7)", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8"],
     sets: [
       [0,1,2,4,5,7,9,11], // -3,
       [0,1,3,4,6,8,10,11], // +1,
@@ -4107,10 +4179,10 @@ const MODE_FAMILIES = {
     ]
   },
 // 9 note scales
-  "Nonatonic 1": {
+  "Nonatonic": {
     familyIndex: 1, // -9 / +9 = 18
     noteCount: 9,
-    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9"],
+    names: ["Nonatonic 1", "Nonatonic 2", "Nonatonic 3", "Nonatonic 1", "Nonatonic 2", "Nonatonic 3", "Nonatonic 1", "Nonatonic 2", "Nonatonic 3"],
     sets: [
       [0,1,3,4,5,7,8,9,11], // +0,
       [0,2,3,4,6,7,8,10,11], // +3,
@@ -4412,29 +4484,28 @@ const MODE_FAMILIES = {
     ]
   },
 // 10 note scales
-  "Decatonic 1": {
+  "No Tritone": {
     familyIndex: 1, // -12 / +12 = 24
     noteCount: 10,
-    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9", "Mode 10"],
+    names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5"],
     sets: [
+      [0,1,2,4,5,6,7,8,10,11], // +0,
+      [0,1,3,4,5,6,7,9,10,11], // +2,
+      [0,2,3,4,5,6,8,9,10,11], // +4,
+      [0,1,2,3,4,6,7,8,9,10], // -4 (flattest)
       [0,1,2,3,5,6,7,8,9,11], // -2,
       [0,1,2,4,5,6,7,8,10,11], // +0,
       [0,1,3,4,5,6,7,9,10,11], // +2,
       [0,2,3,4,5,6,8,9,10,11], // +4,
       [0,1,2,3,4,6,7,8,9,10], // -4,
       [0,1,2,3,5,6,7,8,9,11], // -2,
-      [0,1,2,4,5,6,7,8,10,11], // +0,
-      [0,1,3,4,5,6,7,9,10,11], // +2,
-      [0,2,3,4,5,6,8,9,10,11], // +4,
-      [0,1,2,3,4,6,7,8,9,10], // -4 (flattest)
     ]
   },
-  "Decatonic 2": {
+  "No 4th/5th": {
     familyIndex: 2, // -13 / +13 = 26
     noteCount: 10,
     names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9", "Mode 10"],
     sets: [
-      [0,1,2,3,4,6,7,8,9,11], // -3,
       [0,1,2,3,5,6,7,8,10,11], // -1,
       [0,1,2,4,5,6,7,9,10,11], // +1,
       [0,1,3,4,5,6,8,9,10,11], // +3,
@@ -4444,15 +4515,14 @@ const MODE_FAMILIES = {
       [0,1,3,4,5,6,7,8,10,11], // +1,
       [0,2,3,4,5,6,7,9,10,11], // +3,
       [0,1,2,3,4,5,7,8,9,10], // -5 (flattest)
+      [0,1,2,3,4,6,7,8,9,11], // -3,
     ]
   },
-  "Decatonic 3": {
+  "No M3/m6": {
     familyIndex: 3, // -14 / +14 = 28
     noteCount: 10,
     names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9", "Mode 10"],
     sets: [
-      [0,1,2,3,4,5,7,8,9,11], // -4,
-      [0,1,2,3,4,6,7,8,10,11], // -2,
       [0,1,2,3,5,6,7,9,10,11], // +0,
       [0,1,2,4,5,6,8,9,10,11], // +2,
       [0,1,3,4,5,7,8,9,10,11], // +4,
@@ -4461,16 +4531,15 @@ const MODE_FAMILIES = {
       [0,1,3,4,5,6,7,8,9,11], // +0,
       [0,2,3,4,5,6,7,8,10,11], // +2,
       [0,1,2,3,4,5,6,8,9,10], // -6 (flattest)
+      [0,1,2,3,4,5,7,8,9,11], // -4,
+      [0,1,2,3,4,6,7,8,10,11], // -2,
     ]
   },
-  "Decatonic 4": {
+  "No M6/m3": {
     familyIndex: 4, // -17 / +17 = 34
     noteCount: 10,
     names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9", "Mode 10"],
     sets: [
-      [0,1,2,3,4,5,6,8,9,11], // -5,
-      [0,1,2,3,4,5,7,8,10,11], // -3,
-      [0,1,2,3,4,6,7,9,10,11], // -1,
       [0,1,2,3,5,6,8,9,10,11], // +1,
       [0,1,2,4,5,7,8,9,10,11], // +3,
       [0,1,3,4,6,7,8,9,10,11], // +5,
@@ -4478,16 +4547,16 @@ const MODE_FAMILIES = {
       [0,1,3,4,5,6,7,8,9,10], // -1,
       [0,2,3,4,5,6,7,8,9,11], // +1,
       [0,1,2,3,4,5,6,7,9,10], // -7 (flattest)
+      [0,1,2,3,4,5,6,8,9,11], // -5,
+      [0,1,2,3,4,5,7,8,10,11], // -3,
+      [0,1,2,3,4,6,7,9,10,11], // -1,
     ]
   },
-  "Decatonic 5": {
+  "No M2/m7": {
     familyIndex: 5, // -20 / +20 = 40
     noteCount: 10,
     names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9", "Mode 10"],
     sets: [
-      [0,1,2,3,4,5,6,7,9,11], // -6,
-      [0,1,2,3,4,5,6,8,10,11], // -4,
-      [0,1,2,3,4,5,7,9,10,11], // -2,
       [0,1,2,3,4,6,8,9,10,11], // +0,
       [0,1,2,3,5,7,8,9,10,11], // +2,
       [0,1,2,4,6,7,8,9,10,11], // +4,
@@ -4495,16 +4564,16 @@ const MODE_FAMILIES = {
       [0,2,4,5,6,7,8,9,10,11], // +8,
       [0,2,3,4,5,6,7,8,9,10], // +0,
       [0,1,2,3,4,5,6,7,8,10], // -8 (flattest)
+      [0,1,2,3,4,5,6,7,9,11], // -6,
+      [0,1,2,3,4,5,6,8,10,11], // -4,
+      [0,1,2,3,4,5,7,9,10,11], // -2,
     ]
   },
-  "Decatonic 6": {
+  "No M7/m2": {
     familyIndex: 6, // -25 / +25 = 50
     noteCount: 10,
     names: ["Mode 1", "Mode 2", "Mode 3", "Mode 4", "Mode 5", "Mode 6", "Mode 7", "Mode 8", "Mode 9", "Mode 10"],
     sets: [
-      [0,1,2,3,4,5,6,7,8,11], // -7,
-      [0,1,2,3,4,5,6,7,10,11], // -5,
-      [0,1,2,3,4,5,6,9,10,11], // -3,
       [0,1,2,3,4,5,8,9,10,11], // -1,
       [0,1,2,3,4,7,8,9,10,11], // +1,
       [0,1,2,3,6,7,8,9,10,11], // +3,
@@ -4512,6 +4581,9 @@ const MODE_FAMILIES = {
       [0,1,4,5,6,7,8,9,10,11], // +7,
       [0,3,4,5,6,7,8,9,10,11], // +9,
       [0,1,2,3,4,5,6,7,8,9], // -9 (flattest)
+      [0,1,2,3,4,5,6,7,8,11], // -7,
+      [0,1,2,3,4,5,6,7,10,11], // -5,
+      [0,1,2,3,4,5,6,9,10,11], // -3,
     ]
   },
 // 11 note scales
@@ -4574,68 +4646,6 @@ const MODE_FAMILIES = {
       [0,2,3,5,6,8,9,11]
     ]
   },
-  "P5 & P4": {
-    familyIndex: 1,
-    noteCount: 2,
-    names: ["Perfect Fifth", "Perfect Fourth"],
-    sets: [
-      [0,7],
-      [0,5],
-    ]
-  },
-  "M2 & m7": {
-    familyIndex: 2,
-    noteCount: 2,
-    names: ["Major Second", "Minor Seventh"],
-    sets: [
-      [0,2],
-      [0,10],
-    ]
-  },
-  "M6 & m3": {
-    familyIndex: 3,
-    noteCount: 2,
-    names: ["Major Sixth", "Minor Third"],
-    sets: [
-      [0,9],
-      [0,3],
-    ]
-  },
-  "M3 & m6": {
-    familyIndex: 4,
-    noteCount: 2,
-    names: ["Major Third", "Minor Sixth"],
-    sets: [
-      [0,4],
-      [0,8],
-    ]
-  },
-  "M7 & m2": {
-    familyIndex: 5,
-    noteCount: 2,
-    names: ["Major Seventh", "Minor Second"],
-    sets: [
-      [0,11],
-      [0,1],
-    ]
-  },
-  "Tritone": {
-    familyIndex: 6,
-    noteCount: 2,
-    names: ["Augmented Fourth", "Diminished Fifth"],
-    sets: [
-    [0,6], // Aug 4
-    [0,6], // Dim 5 (same pattern, distinct entry)
-    ]
-  },
-  "Unison/Octave": {
-    familyIndex: 1,
-    noteCount: 1,
-    names: ["Unison/Octave"],
-    sets: [
-      [0],
-    ]
-  }
 };
 
 // ---------- Detection ----------
